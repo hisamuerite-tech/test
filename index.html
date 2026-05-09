@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式会社仙拓 | ホームページ制作・名刺制作</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan: #4dd9e0;
+      --pink: #f4a7b9;
+      --teal: #26c6da;
+      --dark: #1a1a1a;
+      --gray: #f5f5f5;
+      --text: #333;
+      --text-light: #666;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: var(--text); overflow-x: hidden; }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 40px;
+      transition: background .3s;
+    }
+    header.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(6px); box-shadow: 0 1px 8px rgba(0,0,0,.08); }
+    .logo-text { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: .08em; transition: color .3s; }
+    header.scrolled .logo-text { color: var(--teal); }
+    header nav { display: flex; gap: 28px; }
+    header nav a { font-size: .82rem; font-weight: 600; color: #fff; letter-spacing: .05em; transition: color .3s; }
+    header.scrolled nav a { color: var(--text); }
+    header nav a:hover { color: var(--cyan); }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--cyan) 0%, #a8edea 30%, #fbc2d3 70%, var(--pink) 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-bg-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: clamp(60px, 12vw, 130px);
+      font-weight: 900; color: rgba(255,255,255,.18);
+      white-space: nowrap; letter-spacing: .04em; pointer-events: none;
+      font-style: italic;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      max-width: 1100px; width: 100%; padding: 120px 40px 80px; gap: 40px;
+    }
+    .hero-left {}
+    .hero-tag { font-size: .75rem; letter-spacing: .15em; color: rgba(255,255,255,.8); margin-bottom: 12px; text-transform: uppercase; }
+    .hero-catch { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 8px; }
+    .hero-catch-en { font-size: .9rem; color: rgba(255,255,255,.75); margin-bottom: 28px; letter-spacing: .1em; }
+    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 40px; }
+    .hero-scroll span { font-size: .7rem; letter-spacing: .15em; color: rgba(255,255,255,.7); text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 48px; background: rgba(255,255,255,.5); position: relative; overflow: hidden; }
+    .scroll-line::after {
+      content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+      background: #fff; animation: scrollDown 1.8s ease infinite;
+    }
+    @keyframes scrollDown { 0%{top:-100%} 100%{top:200%} }
+
+    .hero-right { position: relative; height: 400px; }
+    .photo-card {
+      position: absolute; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+      background: #ddd;
+    }
+    .photo-card .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(255,255,255,.3); }
+    .pc1 { width: 180px; height: 220px; top: 0; right: 40px; transform: rotate(3deg); }
+    .pc2 { width: 160px; height: 190px; top: 60px; right: 220px; transform: rotate(-4deg); }
+    .pc3 { width: 140px; height: 170px; bottom: 20px; right: 60px; transform: rotate(-2deg); }
+    .pc4 { width: 120px; height: 150px; bottom: 40px; right: 240px; transform: rotate(5deg); }
+
+    /* ========== SECTION BASE ========== */
+    .section { padding: 80px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .sec-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+    .sec-sub { font-size: .82rem; color: var(--text-light); letter-spacing: .1em; margin-bottom: 40px; text-transform: uppercase; }
+
+    /* ========== SERVICES ========== */
+    .services { background: #fff; }
+    .services .sec-title { font-size: 1.4rem; }
+    .services-intro { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+    .services-intro-text p { font-size: .9rem; color: var(--text-light); line-height: 1.9; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;
+    }
+    .service-item { cursor: pointer; }
+    .service-thumb {
+      aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; margin-bottom: 10px;
+      background: #e8e8e8; display: flex; align-items: center; justify-content: center; font-size: 2rem;
+      transition: transform .3s;
+    }
+    .service-item:hover .service-thumb { transform: scale(1.03); }
+    .service-label { display: flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 700; }
+    .service-label::before { content: ''; display: inline-block; width: 28px; height: 3px; background: var(--teal); flex-shrink: 0; }
+
+    /* ========== ABOUT ========== */
+    .about { background: var(--gray); position: relative; overflow: hidden; }
+    .about-watermark {
+      position: absolute; bottom: -20px; right: -20px;
+      font-size: clamp(80px, 14vw, 160px); font-weight: 900;
+      color: rgba(0,0,0,.04); pointer-events: none; line-height: 1;
+      font-style: italic; white-space: nowrap;
+    }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    .about-en { font-size: .85rem; font-weight: 700; color: var(--teal); letter-spacing: .12em; margin-bottom: 20px; text-transform: uppercase; }
+    .about-text p { font-size: .88rem; line-height: 2; color: var(--text-light); margin-bottom: 12px; }
+    .btn-teal {
+      display: inline-block; background: var(--teal); color: #fff;
+      padding: 12px 32px; border-radius: 4px; font-size: .85rem; font-weight: 700;
+      margin-top: 24px; transition: opacity .2s;
+    }
+    .btn-teal:hover { opacity: .85; }
+    .about-photo { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; background: #ccc; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+
+    /* ========== INTERVIEW ========== */
+    .interview { background: #fff; padding-bottom: 60px; }
+    .interview-label { font-size: .75rem; letter-spacing: .15em; color: var(--text-light); margin-bottom: 24px; text-align: center; }
+    .carousel-wrap { position: relative; overflow: hidden; }
+    .carousel-track { display: flex; transition: transform .5s cubic-bezier(.4,0,.2,1); }
+    .carousel-item { min-width: 25%; padding: 0 12px; }
+    .carousel-photo {
+      aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; margin-bottom: 12px;
+      background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 3rem;
+    }
+    .carousel-name { font-size: .85rem; font-weight: 700; }
+    .carousel-pos { font-size: .75rem; color: var(--text-light); }
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer; transition: background .3s; }
+    .dot.active { background: var(--teal); }
+
+    /* ========== CROSSTALK ========== */
+    .crosstalk { background: #fff; padding-top: 0; }
+    .crosstalk-label { font-size: .75rem; letter-spacing: .15em; color: var(--text-light); margin-bottom: 16px; }
+    .crosstalk-photo { border-radius: 8px; overflow: hidden; aspect-ratio: 16/7; background: #ccc; display: flex; align-items: center; justify-content: center; font-size: 4rem; max-width: 640px; }
+
+    /* ========== CULTURE ========== */
+    .culture {
+      position: relative; min-height: 480px;
+      background: #2c2c2c; display: flex; align-items: center; overflow: hidden;
+    }
+    .culture-bg { position: absolute; inset: 0; background: #555; display: flex; align-items: center; justify-content: center; font-size: 6rem; opacity: .6; }
+    .culture-card {
+      position: relative; z-index: 2; background: rgba(255,255,255,.92);
+      border-radius: 8px; padding: 40px 36px; max-width: 340px; margin-left: 80px;
+    }
+    .culture-card .en { font-size: .8rem; font-weight: 700; color: var(--teal); letter-spacing: .12em; margin-bottom: 12px; }
+    .culture-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; }
+    .culture-card p { font-size: .85rem; line-height: 1.9; color: var(--text-light); }
+
+    /* ========== NEWS + VOICE ========== */
+    .news-voice { background: #fff; }
+    .nv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .nv-title { font-size: 1rem; font-weight: 800; margin-bottom: 20px; }
+    .news-list { list-style: none; }
+    .news-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+    .news-date { font-size: .75rem; color: var(--text-light); white-space: nowrap; margin-top: 2px; }
+    .news-link { font-size: .85rem; color: var(--text); transition: color .2s; }
+    .news-link:hover { color: var(--teal); }
+    .voice-card { display: flex; gap: 20px; align-items: center; border: 1px solid #eee; border-radius: 8px; padding: 20px; }
+    .voice-photo { width: 100px; height: 100px; border-radius: 8px; overflow: hidden; flex-shrink: 0; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .voice-text p { font-size: .83rem; line-height: 1.8; color: var(--text-light); }
+    .voice-name { font-size: .8rem; font-weight: 700; margin-top: 8px; }
+
+    /* ========== CTA ========== */
+    .cta {
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--pink) 100%);
+      padding: 60px 40px; text-align: center;
+    }
+    .cta p { font-size: 1rem; color: #fff; margin-bottom: 24px; font-weight: 600; letter-spacing: .05em; }
+    .btn-cta {
+      display: inline-block; background: #fff; color: var(--teal);
+      padding: 14px 44px; border-radius: 40px; font-size: .9rem; font-weight: 800;
+      box-shadow: 0 4px 20px rgba(0,0,0,.12); transition: transform .2s, box-shadow .2s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
+
+    /* ========== MARQUEE ========== */
+    .marquee-wrap { background: var(--dark); padding: 20px 0; overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 18s linear infinite; }
+    .marquee-track span {
+      font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; color: #fff;
+      padding: 0 32px; letter-spacing: .08em; white-space: nowrap;
+    }
+    .marquee-track span.pink { color: #f06292; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ========== FOOTER ========== */
+    footer { background: var(--dark); color: rgba(255,255,255,.55); padding: 60px 40px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 200px 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-logo { font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+    .footer-desc { font-size: .78rem; line-height: 1.8; }
+    .footer-col h4 { font-size: .82rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: .78rem; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--teal); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .85rem; transition: background .2s; }
+    .footer-social a:hover { background: var(--teal); }
+    .footer-copy { font-size: .75rem; }
+
+    /* ========== FADE-IN ANIMATION ========== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; padding-top: 100px; }
+      .hero-right { display: none; }
+      .services-intro { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; }
+      .nv-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .carousel-item { min-width: 50%; }
+      .culture-card { margin: 40px 24px; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 60px 20px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .carousel-item { min-width: 100%; }
+      .footer-top { grid-template-columns: 1fr; }
+      header { padding: 16px 20px; }
+      header nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header">
+    <div class="logo-text">株式会社仙拓</div>
+    <nav>
+      <a href="#services">サービス</a>
+      <a href="#about">私たちについて</a>
+      <a href="#interview">インタビュー</a>
+      <a href="#culture">カルチャー</a>
+      <a href="#news">お知らせ</a>
+      <a href="#contact">採用情報</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg-text">NOW THE FUTURE IS</div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <p class="hero-tag">Sen-Taku, Inc.</p>
+        <h1 class="hero-catch">未来は今始まる</h1>
+        <p class="hero-catch-en">The Future Starts Now</p>
+        <div class="hero-scroll">
+          <span>Scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="photo-card pc1"><div class="ph">💼</div></div>
+        <div class="photo-card pc2"><div class="ph">🌐</div></div>
+        <div class="photo-card pc3"><div class="ph">🤝</div></div>
+        <div class="photo-card pc4"><div class="ph">✨</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section services" id="services">
+    <div class="section-inner">
+      <div class="services-intro fade-in">
+        <div>
+          <p class="sec-sub">Our Services</p>
+          <h2 class="sec-title">当事務所の<br>4つのサービス</h2>
+        </div>
+        <div class="services-intro-text">
+          <p>
+            仙拓はホームページ制作・名刺制作を通じて、お客様の課題解決に取り組んでいます。<br>
+            障害のある方・多様な背景を持つスタッフが力を合わせ、唯一無二の視点でサービスを提供します。<br>
+            働きたい人が誰でも働ける社会の実現を目指し、クラウドソーシングや業務支援にも取り組んでいます。
+          </p>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-item fade-in">
+          <div class="service-thumb">🌐</div>
+          <p class="service-label">ホームページ制作</p>
+        </div>
+        <div class="service-item fade-in">
+          <div class="service-thumb">🪪</div>
+          <p class="service-label">名刺制作</p>
+        </div>
+        <div class="service-item fade-in">
+          <div class="service-thumb">💼</div>
+          <p class="service-label">ChallengeDomain</p>
+        </div>
+        <div class="service-item fade-in">
+          <div class="service-thumb">☁️</div>
+          <p class="service-label">クラウド活用支援</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="about-watermark">SENTAKU</div>
+    <div class="section-inner">
+      <div class="about-inner">
+        <div class="about-text fade-in">
+          <p class="about-en">About us</p>
+          <p>
+            私たちパートナーは、立会いに立てずとも、<br>
+            当社のサポートによりいつも心に寄り添える存在でありたいと考えています。
+          </p>
+          <p>
+            仙拓のメンバーは、ひとりひとりが自分の可能性を諦めません。<br>
+            障害があっても、どんな状況にあっても、前向きに挑戦し続けます。
+          </p>
+          <p>
+            より多くの方が自分らしく活躍できるように、<br>
+            私たちは世界中の人に新しい選択肢を届け続けていきます。
+          </p>
+          <a href="#" class="btn-teal">詳しく見る</a>
+        </div>
+        <div class="about-photo fade-in">👥</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERVIEW ===== -->
+  <section class="section interview" id="interview">
+    <div class="section-inner">
+      <p class="interview-label">← インタビュー</p>
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">佐藤 仙務</p>
+            <p class="carousel-pos">代表取締役社長</p>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">田中 花子</p>
+            <p class="carousel-pos">Webデザイナー</p>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">山本 太郎</p>
+            <p class="carousel-pos">エンジニア</p>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">鈴木 あい</p>
+            <p class="carousel-pos">コンサルタント</p>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">加藤 健一</p>
+            <p class="carousel-pos">クリエイター</p>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-photo">👤</div>
+            <p class="carousel-name">伊藤 みか</p>
+            <p class="carousel-pos">マーケター</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+
+    <!-- CROSSTALK -->
+    <div class="section-inner" style="margin-top:48px;">
+      <p class="crosstalk-label">← クロストーク</p>
+      <div class="crosstalk-photo">🌿</div>
+    </div>
+  </section>
+
+  <!-- ===== CULTURE ===== -->
+  <section class="culture" id="culture">
+    <div class="culture-bg">🏢</div>
+    <div class="culture-card fade-in">
+      <p class="en">Culture</p>
+      <h3>私たちらしい<br>はたらき方をしよう。</h3>
+      <p>
+        リモートワークやクラウドサービスを活用し、<br>
+        すべての人がいきいきと働ける環境を整えています。<br>
+        チームの多様性が仙拓の最大の強みです。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== NEWS + VOICE ===== -->
+  <section class="section news-voice" id="news">
+    <div class="section-inner">
+      <div class="nv-grid">
+        <div class="fade-in">
+          <h3 class="nv-title">お知らせ</h3>
+          <ul class="news-list">
+            <li class="news-item">
+              <span class="news-date">2024/11/01</span>
+              <a class="news-link" href="#">ランサーズ株式会社との業務提携を発表しました</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2024/09/15</span>
+              <a class="news-link" href="#">ChallengeDomainが新機能をリリースしました</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2024/08/10</span>
+              <a class="news-link" href="#">kintone活用事例として掲載されました</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2024/06/20</span>
+              <a class="news-link" href="#">リモートワーク事例紹介動画を公開しました</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2024/04/01</span>
+              <a class="news-link" href="#">てっぺんMATSURIにて代表が登壇しました</a>
+            </li>
+          </ul>
+        </div>
+        <div class="fade-in">
+          <h3 class="nv-title">お客様の声</h3>
+          <div class="voice-card">
+            <div class="voice-photo">😊</div>
+            <div class="voice-text">
+              <p>仙拓さんにホームページを作っていただいてから、問い合わせが大幅に増えました。丁寧なヒアリングと迅速な対応に大変満足しています。</p>
+              <p class="voice-name">— 製造業 A社様</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="contact">
+    <p>一緒に、新しい働き方を創りませんか？</p>
+    <a href="mailto:info@sen-taku.co.jp" class="btn-cta">お問い合わせフォーム</a>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
+      <span>OPEN JOBS</span><span class="pink">✦</span>
+      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
+      <span>OPEN JOBS</span><span class="pink">✦</span>
+      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
+      <span>OPEN JOBS</span><span class="pink">✦</span>
+      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
+      <span>OPEN JOBS</span><span class="pink">✦</span>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <p class="footer-logo">株式会社仙拓</p>
+          <p class="footer-desc">働きたい人が、誰でも働ける社会へ。<br>世界中の人に新しい選択肢を。</p>
+        </div>
+        <div class="footer-col">
+          <h4>よくあるご質問</h4>
+          <ul>
+            <li><a href="#">サービスについて</a></li>
+            <li><a href="#">料金について</a></li>
+            <li><a href="#">納期について</a></li>
+            <li><a href="#">支払い方法</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="#">ホームページ制作</a></li>
+            <li><a href="#">名刺制作</a></li>
+            <li><a href="#">ChallengeDomain</a></li>
+            <li><a href="#">クラウド支援</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>広告フォーム</h4>
+          <ul>
+            <li><a href="#">採用情報</a></li>
+            <li><a href="#">業務委託</a></li>
+            <li><a href="#">パートナー募集</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="#">会社概要</a></li>
+            <li><a href="#">代表メッセージ</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">🐦</a>
+          <a href="#" title="Facebook">📘</a>
+          <a href="#" title="YouTube">▶️</a>
+        </div>
+        <p class="footer-copy">&copy; 2024 株式会社仙拓. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    const items = track.querySelectorAll('.carousel-item');
+    const visibleCount = () => window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+    let current = 0, totalSlides = 0, dots = [];
+
+    function buildDots() {
+      dotsWrap.innerHTML = ''; dots = [];
+      totalSlides = Math.ceil(items.length / visibleCount());
+      for (let i = 0; i < totalSlides; i++) {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d); dots.push(d);
+      }
+    }
+
+    function goTo(n) {
+      current = Math.max(0, Math.min(n, totalSlides - 1));
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    buildDots();
+    window.addEventListener('resize', () => { buildDots(); goTo(0); });
+    setInterval(() => goTo(current + 1 < totalSlides ? current + 1 : 0), 4000);
+
+    const photoCards = document.querySelectorAll('.photo-card');
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const cx = (e.clientX - rect.left) / rect.width - 0.5;
+      const cy = (e.clientY - rect.top) / rect.height - 0.5;
+      photoCards.forEach((card, i) => {
+        const f = (i % 2 === 0 ? 1 : -1) * 6;
+        card.style.transform = `rotate(${[3,-4,-2,5][i]}deg) translate(${cx*f}px,${cy*f}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
