@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式会社仙拓 | ホームページ制作・名刺制作</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #0ea5e9;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --bg: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN', Meiryo, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: .05em;
+    }
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--primary); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 96px 24px 80px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: .9;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 52px;
+      font-size: .95rem;
+    }
+
+    /* ===== MISSION ===== */
+    .mission { background: var(--white); }
+    .mission-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .mission-body img { width: 100%; border-radius: 12px; }
+    .mission-text h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    .mission-text p { color: var(--text-light); }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--bg); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .card p { color: var(--text-light); font-size: .93rem; }
+
+    /* ===== ABOUT CEO ===== */
+    .ceo { background: var(--white); }
+    .ceo-inner {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .ceo-photo {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+    .ceo-text h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+    .ceo-text .title { color: var(--text-light); margin-bottom: 16px; font-size: .93rem; }
+    .ceo-text p { color: var(--text-light); }
+
+    /* ===== VALUES ===== */
+    .values { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: var(--white); }
+    .values .section-title, .values .section-sub { color: var(--white); }
+    .values .section-sub { opacity: .85; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .value-item {
+      background: rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+    .value-item .icon { font-size: 2rem; margin-bottom: 12px; }
+    .value-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .value-item p { font-size: .9rem; opacity: .88; }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--bg); }
+    .contact-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      text-align: center;
+    }
+    .contact-box p { color: var(--text-light); margin-bottom: 28px; }
+    .contact-info { margin-top: 24px; color: var(--text-light); font-size: .93rem; }
+    .contact-info span { display: block; margin: 4px 0; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .88rem;
+    }
+    footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 700px) {
+      .mission-body { grid-template-columns: 1fr; }
+      .ceo-inner { flex-direction: column; align-items: center; }
+      .ceo-photo { width: 140px; height: 140px; font-size: 3.5rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">株式会社仙拓</a>
+      <nav>
+        <a href="#services">サービス</a>
+        <a href="#ceo">代表紹介</a>
+        <a href="#values">私たちの想い</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>働きたい人が、<br>誰でも働ける社会へ。</h1>
+    <p>株式会社仙拓は、ホームページ制作・名刺制作を通じて、<br>障害のある方・すべての人に新しい選択肢を届けます。</p>
+    <a href="#contact" class="btn">お問い合わせはこちら</a>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission" id="mission">
+    <div class="section-inner">
+      <div class="mission-body">
+        <div class="mission-text">
+          <h2>私たちのミッション</h2>
+          <p>
+            仙拓は2011年の創業以来、「世界中の人に新しい選択肢を提供する企業」を目指してきました。<br><br>
+            障害をお持ちの方や、さまざまな事情で外出が困難な方が、在宅でいきいきと働ける環境づくりを推進。
+            クラウドサービスとリモートワークを積極的に活用し、多様な人材が力を発揮できる会社です。
+          </p>
+        </div>
+        <div style="background:linear-gradient(135deg,#dbeafe,#e0f2fe);border-radius:12px;height:280px;display:flex;align-items:center;justify-content:center;font-size:5rem;">
+          🌏
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <h2 class="section-title">サービス</h2>
+      <p class="section-sub">お客様の課題を解決する、仙拓のサービスをご紹介します。</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>ホームページ制作</h3>
+          <p>企業・個人事業主向けのWebサイトを、丁寧にヒアリングしながら制作。目的に合ったデザインと機能をご提供します。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🪪</div>
+          <h3>名刺制作</h3>
+          <p>ブランドイメージを大切に、印象に残る名刺をデザイン。小ロットから対応可能です。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💼</div>
+          <h3>ChallengeDomain</h3>
+          <p>障害をお持ちの在宅ワーカーと企業をつなぐクラウドソーシングサービス。多様な人材の力を活用した業務委託が可能です。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">☁️</div>
+          <h3>クラウド活用支援</h3>
+          <p>kintoneなどのクラウドツールを活用した業務効率化をご支援。リモートワーク導入のコンサルティングも承ります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEO -->
+  <section class="ceo" id="ceo">
+    <div class="section-inner">
+      <h2 class="section-title">代表紹介</h2>
+      <p class="section-sub">株式会社仙拓 代表取締役社長</p>
+      <div class="ceo-inner">
+        <div class="ceo-photo">👤</div>
+        <div class="ceo-text">
+          <h2>佐藤 仙務（さとう ひさむ）</h2>
+          <p class="title">代表取締役社長</p>
+          <p>
+            脊髄性筋萎縮症により、ほぼ寝たきりの状態で会社を経営。「寝たきり社長」として各メディアに取り上げられ、講演活動も行っています。<br><br>
+            「障害があっても、自分の可能性を諦めない」という信念のもと、2011年に仙拓を創業。自身の経験を活かし、障害のある方が働ける環境の整備と社会的課題の解決に取り組んでいます。<br><br>
+            ランサーズ株式会社との業務提携をはじめ、多くの企業・団体と連携しながら、新しい働き方の実現を目指しています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values" id="values">
+    <div class="section-inner">
+      <h2 class="section-title">私たちの想い</h2>
+      <p class="section-sub">仙拓が大切にしている3つの価値観</p>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="icon">✨</div>
+          <h3>可能性を信じる</h3>
+          <p>どんな状況にあっても、人は可能性を持っています。その力を引き出すお手伝いをします。</p>
+        </div>
+        <div class="value-item">
+          <div class="icon">🤝</div>
+          <h3>多様性を活かす</h3>
+          <p>障害のある方・ない方、多様な背景を持つ人々が協力し、より良いものを生み出します。</p>
+        </div>
+        <div class="value-item">
+          <div class="icon">🚀</div>
+          <h3>新しい選択肢を創る</h3>
+          <p>「働けない」を「働ける」に変える。世界中の人に新しい選択肢を届けていきます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="section-sub">サービスに関するご質問・ご相談はお気軽にどうぞ。</p>
+      <div class="contact-box">
+        <p>ホームページ制作・名刺制作・ChallengeDomain、その他お気軽にご相談ください。</p>
+        <a href="mailto:info@sen-taku.co.jp" class="btn" style="background:var(--primary);color:var(--white);">メールで問い合わせる</a>
+        <div class="contact-info">
+          <span>📍 愛知県</span>
+          <span>🌐 <a href="http://sen-taku.co.jp/" target="_blank" rel="noopener">sen-taku.co.jp</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 株式会社仙拓. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
