@@ -1,580 +1,948 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>株式会社仙拓 | ホームページ制作・名刺制作</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猫でも分かるやさしいNISA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(135deg,#FFB380 0%,#FF8C42 50%,#7EC8E3 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.phone-frame{width:375px;height:780px;background:#FAFAFA;border-radius:44px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.3),0 0 0 12px #1a1a1a,0 0 0 14px #333,inset 0 0 0 2px #555;flex-shrink:0}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1a1a1a;border-radius:0 0 20px 20px;z-index:100}
+.screen{position:absolute;top:0;left:0;right:0;bottom:0;background:#FAFAFA;overflow-y:auto;overflow-x:hidden;display:none;padding-bottom:70px;padding-top:28px}
+.screen.active{display:block}
+.screen::-webkit-scrollbar{width:0}
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;height:70px;background:#fff;border-top:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-around;z-index:50;box-shadow:0 -4px 20px rgba(255,140,66,0.08)}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:8px 12px;border-radius:16px;transition:all 0.2s;position:relative}
+.nav-item.active{color:#FF8C42}
+.nav-item:not(.active){color:#9B9B9B}
+.nav-item i{font-size:20px;transition:all 0.2s}
+.nav-item.active i{font-size:22px}
+.nav-item span{font-size:9px;font-weight:700}
+.nav-pill{position:absolute;bottom:-2px;width:24px;height:3px;background:#FF8C42;border-radius:3px;left:50%;transform:translateX(-50%)}
+.btn-primary{background:linear-gradient(135deg,#FF8C42,#FF6B1A);color:#fff;border:none;border-radius:50px;padding:14px 32px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(255,140,66,0.4);transition:all 0.2s;width:100%}
+.btn-primary:active{transform:scale(0.97)}
+.btn-secondary{background:#fff;color:#FF8C42;border:2px solid #FF8C42;border-radius:50px;padding:12px 28px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.card{background:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 20px rgba(255,140,66,0.12)}
+.section-title{font-size:18px;font-weight:800;color:#2D2D2D;margin-bottom:12px}
+.text-orange{color:#FF8C42}
+.tag{display:inline-block;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700}
+.tag-green{background:#E8F8F0;color:#5CBF8A}
+.tag-blue{background:#E0F4FB;color:#4A9FB5}
+.tag-orange{background:#FFF0E6;color:#FF8C42}
+.speech-bubble-wrap{display:flex;align-items:flex-end;gap:10px;margin:12px 16px}
+.speech-bubble{background:#fff;border-radius:20px 20px 20px 4px;padding:12px 16px;box-shadow:0 4px 16px rgba(255,140,66,0.15);flex:1;position:relative}
+.speech-bubble::before{content:'';position:absolute;bottom:8px;left:-8px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:8px solid #fff}
+.speech-bubble p{font-size:13px;color:#2D2D2D;line-height:1.5;font-weight:600}
+.speech-bubble .bubble-title{font-size:10px;color:#FF8C42;font-weight:800;margin-bottom:4px}
+.progress-bar-wrap{background:#F0F0F0;border-radius:50px;height:10px;overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,#FF8C42,#FFB380);transition:width 1s ease}
+.stars{color:#FFD166;font-size:13px}
 
-    :root {
-      --cyan: #4dd9e0;
-      --pink: #f4a7b9;
-      --teal: #26c6da;
-      --dark: #1a1a1a;
-      --gray: #f5f5f5;
-      --text: #333;
-      --text-light: #666;
-    }
+/* ONBOARDING */
+#screen-onboarding{background:linear-gradient(180deg,#FFF8F0 0%,#FAFAFA 100%)}
+.onboarding-slides{display:flex;width:300%;transition:transform 0.4s ease}
+.slide{width:33.333%;padding:16px 24px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.slide h2{font-size:24px;font-weight:900;color:#2D2D2D;margin-bottom:10px;line-height:1.3}
+.slide p{font-size:14px;color:#5A5A5A;line-height:1.7;font-weight:600}
+.ob-dots{display:flex;gap:8px;justify-content:center;margin:12px 0}
+.ob-dot{width:8px;height:8px;border-radius:50%;background:#FFB380;transition:all 0.3s}
+.ob-dot.active{width:24px;border-radius:4px;background:#FF8C42}
+.ob-header{display:flex;justify-content:flex-end;padding:8px 20px}
+.skip-btn{background:none;border:none;color:#9B9B9B;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+.feature-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F5F5F5}
+.feature-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.exp-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px}
+.exp-option{border:2px solid #F0F0F0;border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:12px;font-weight:700;color:#5A5A5A}
+.exp-option.selected{border-color:#FF8C42;background:#FFF0E6;color:#FF8C42}
+.profile-input{width:100%;border:2px solid #F0F0F0;border-radius:16px;padding:12px 16px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;color:#2D2D2D;margin-bottom:12px;outline:none;transition:border 0.2s}
+.profile-input:focus{border-color:#FF8C42}
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: var(--text); overflow-x: hidden; }
+/* HOME */
+.home-header{background:linear-gradient(135deg,#FF8C42,#FFB380);padding:40px 20px 24px;color:#fff;position:relative;overflow:hidden}
+.home-header::before{content:'🌸';font-size:60px;position:absolute;right:-10px;top:-10px;opacity:0.2}
+.home-greeting{font-size:22px;font-weight:900;margin-bottom:4px}
+.streak-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.25);border-radius:50px;padding:4px 12px;font-size:13px;font-weight:700;margin-top:8px}
+.home-body{padding:16px}
+.savings-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 4px 20px rgba(255,140,66,0.12);margin-bottom:14px}
+.savings-amount{font-size:28px;font-weight:900;color:#FF8C42;margin-bottom:4px}
+.tip-card{background:linear-gradient(135deg,#FFF8F0,#FFE4CC);border-radius:20px;padding:16px;border-left:4px solid #FF8C42}
+.tip-title{font-size:11px;color:#FF8C42;font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
 
-    img { display: block; width: 100%; object-fit: cover; }
-    a { text-decoration: none; color: inherit; }
+/* DIAGNOSIS */
+.diag-header{background:linear-gradient(135deg,#7EC8E3,#C5E8F7);padding:40px 20px 20px;text-align:center}
+.diag-title{font-size:20px;font-weight:900;color:#2D2D2D;margin-bottom:6px}
+.diag-progress{height:6px;background:#E0E0E0;border-radius:3px;margin:12px 20px}
+.diag-progress-fill{height:100%;background:linear-gradient(90deg,#FF8C42,#FFB380);border-radius:3px;transition:width 0.5s ease}
+.diag-body{padding:16px}
+.diag-option{background:#fff;border:2px solid #F0F0F0;border-radius:16px;padding:14px 18px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;color:#2D2D2D;margin-bottom:10px}
+.diag-option:hover,.diag-option.selected{border-color:#FF8C42;background:#FFF0E6;color:#FF8C42}
+.diag-option-emoji{font-size:24px}
+.result-badge{background:linear-gradient(135deg,#FF8C42,#FFB380);color:#fff;border-radius:20px;padding:24px;margin-bottom:16px;text-align:center}
+.result-title{font-size:18px;font-weight:900;margin-bottom:6px}
+.result-type{font-size:24px;font-weight:900;margin-bottom:8px}
+.result-desc{font-size:13px;opacity:0.95;line-height:1.6;font-weight:600}
+.result-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.result-feature{background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 4px 16px rgba(255,140,66,0.1)}
+.result-feature-icon{font-size:24px;margin-bottom:6px}
+.result-feature-label{font-size:11px;color:#9B9B9B;font-weight:700}
+.result-feature-val{font-size:14px;color:#2D2D2D;font-weight:800}
 
-    /* ========== HEADER ========== */
-    header {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 40px;
-      transition: background .3s;
-    }
-    header.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(6px); box-shadow: 0 1px 8px rgba(0,0,0,.08); }
-    .logo-text { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: .08em; transition: color .3s; }
-    header.scrolled .logo-text { color: var(--teal); }
-    header nav { display: flex; gap: 28px; }
-    header nav a { font-size: .82rem; font-weight: 600; color: #fff; letter-spacing: .05em; transition: color .3s; }
-    header.scrolled nav a { color: var(--text); }
-    header nav a:hover { color: var(--cyan); }
+/* SIMULATION */
+.sim-header{background:linear-gradient(135deg,#5CBF8A,#7EC8E3);padding:40px 20px 20px;color:#fff;text-align:center}
+.sim-body{padding:16px}
+.sim-result-card{background:linear-gradient(135deg,#FF8C42,#FFB380);border-radius:24px;padding:24px;color:#fff;text-align:center;margin-bottom:16px;box-shadow:0 8px 30px rgba(255,140,66,0.35)}
+.sim-result-amount{font-size:38px;font-weight:900;margin-bottom:4px}
+.slider-group{background:#fff;border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 4px 16px rgba(255,140,66,0.08)}
+.slider-label{font-size:13px;font-weight:800;color:#2D2D2D;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.slider-val{color:#FF8C42;font-size:16px}
+input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:#F0F0F0;outline:none;margin:10px 0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#FF8C42;cursor:pointer;box-shadow:0 2px 8px rgba(255,140,66,0.4)}
+.tax-callout{background:linear-gradient(135deg,#E8F8F0,#C5F0D8);border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.bar-chart{display:flex;align-items:flex-end;gap:4px;height:120px;margin-top:12px}
+.bar-group{display:flex;flex-direction:column;align-items:center;flex:1;gap:0}
+.bar-wrap{display:flex;flex-direction:column;align-items:center;width:100%;flex:1;justify-content:flex-end}
+.bar-invest{background:#C5E8F7;width:80%}
+.bar-gain{background:#FF8C42;border-radius:6px 6px 0 0;width:80%}
+.bar-label{font-size:9px;color:#9B9B9B;font-weight:700;margin-top:4px}
+.fun-comparison{background:#FFF8F0;border-radius:16px;padding:14px;text-align:center;border:2px dashed #FFB380;margin-bottom:12px}
 
-    /* ========== HERO ========== */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--cyan) 0%, #a8edea 30%, #fbc2d3 70%, var(--pink) 100%);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-bg-text {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-size: clamp(60px, 12vw, 130px);
-      font-weight: 900; color: rgba(255,255,255,.18);
-      white-space: nowrap; letter-spacing: .04em; pointer-events: none;
-      font-style: italic;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
-      max-width: 1100px; width: 100%; padding: 120px 40px 80px; gap: 40px;
-    }
-    .hero-left {}
-    .hero-tag { font-size: .75rem; letter-spacing: .15em; color: rgba(255,255,255,.8); margin-bottom: 12px; text-transform: uppercase; }
-    .hero-catch { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 8px; }
-    .hero-catch-en { font-size: .9rem; color: rgba(255,255,255,.75); margin-bottom: 28px; letter-spacing: .1em; }
-    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 40px; }
-    .hero-scroll span { font-size: .7rem; letter-spacing: .15em; color: rgba(255,255,255,.7); text-transform: uppercase; }
-    .scroll-line { width: 1px; height: 48px; background: rgba(255,255,255,.5); position: relative; overflow: hidden; }
-    .scroll-line::after {
-      content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
-      background: #fff; animation: scrollDown 1.8s ease infinite;
-    }
-    @keyframes scrollDown { 0%{top:-100%} 100%{top:200%} }
+/* LEARNING */
+.learn-header{background:linear-gradient(135deg,#FFB380,#FF8C42);padding:40px 20px 20px;color:#fff}
+.learn-title{font-size:20px;font-weight:900;margin-bottom:12px}
+.level-row{display:flex;align-items:center;gap:12px}
+.level-badge{background:rgba(255,255,255,0.25);border-radius:50px;padding:4px 14px;font-size:13px;font-weight:800}
+.xp-bar{flex:1;height:8px;background:rgba(255,255,255,0.3);border-radius:4px;overflow:hidden}
+.xp-fill{height:100%;background:#fff;border-radius:4px;width:65%}
+.learn-body{padding:16px}
+.lesson-card{background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:10px;box-shadow:0 4px 16px rgba(255,140,66,0.08);display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.lesson-card.current{border:2px solid #FF8C42;box-shadow:0 4px 20px rgba(255,140,66,0.2)}
+.lesson-card.locked{opacity:0.6;cursor:default}
+.lesson-card.done{background:#F8FFF8}
+.lesson-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.lesson-icon.orange{background:#FFF0E6}
+.lesson-icon.green{background:#E8F8F0}
+.lesson-icon.gray{background:#F5F5F5}
+.lesson-info{flex:1}
+.lesson-title{font-size:14px;font-weight:800;color:#2D2D2D;margin-bottom:4px}
+.lesson-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lesson-duration{font-size:11px;color:#9B9B9B;font-weight:600}
+.lesson-xp{font-size:11px;color:#FF8C42;font-weight:700}
+.current-ribbon{position:absolute;top:0;right:0;background:#FF8C42;color:#fff;font-size:9px;font-weight:800;padding:3px 10px;border-radius:0 0 0 12px}
+.lesson-detail{background:#fff;border-radius:20px;padding:20px;margin-bottom:12px;box-shadow:0 4px 20px rgba(255,140,66,0.12)}
+.lesson-content-block{background:#FFF8F0;border-radius:14px;padding:14px;margin-bottom:12px}
+.lesson-content-block p{font-size:13px;color:#2D2D2D;line-height:1.8;font-weight:600}
+.highlight{background:#FF8C42;color:#fff;padding:2px 8px;border-radius:6px;font-weight:800}
 
-    .hero-right { position: relative; height: 400px; }
-    .photo-card {
-      position: absolute; border-radius: 8px; overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,.18);
-      background: #ddd;
-    }
-    .photo-card .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(255,255,255,.3); }
-    .pc1 { width: 180px; height: 220px; top: 0; right: 40px; transform: rotate(3deg); }
-    .pc2 { width: 160px; height: 190px; top: 60px; right: 220px; transform: rotate(-4deg); }
-    .pc3 { width: 140px; height: 170px; bottom: 20px; right: 60px; transform: rotate(-2deg); }
-    .pc4 { width: 120px; height: 150px; bottom: 40px; right: 240px; transform: rotate(5deg); }
+/* PRODUCTS */
+.prod-header{background:linear-gradient(135deg,#C5E8F7,#7EC8E3);padding:40px 20px 16px;text-align:center}
+.filter-tabs{display:flex;gap:8px;padding:12px 16px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow-x:auto}
+.filter-tabs::-webkit-scrollbar{display:none}
+.filter-tab{border:2px solid #F0F0F0;border-radius:50px;padding:6px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:#9B9B9B;cursor:pointer;white-space:nowrap;transition:all 0.2s;background:#fff}
+.filter-tab.active{border-color:#FF8C42;background:#FFF0E6;color:#FF8C42}
+.prod-body{padding:16px}
+.prod-card{background:#fff;border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 4px 20px rgba(255,140,66,0.1)}
+.prod-name{font-size:15px;font-weight:800;color:#2D2D2D;flex:1;margin-right:8px;line-height:1.4}
+.prod-risk-badge{padding:4px 10px;border-radius:50px;font-size:10px;font-weight:800;white-space:nowrap}
+.prod-risk-low{background:#E8F8F0;color:#5CBF8A}
+.prod-risk-mid{background:#FFF0E6;color:#FF8C42}
+.prod-risk-high{background:#FFE8E8;color:#E05A5A}
+.prod-comment{background:#FFF8F0;border-radius:12px;padding:10px 12px;display:flex;gap:8px;align-items:flex-start;margin-bottom:10px}
+.prod-comment-text{font-size:12px;color:#5A5A5A;line-height:1.6;font-weight:600}
+.prod-btn{background:#FFF0E6;border:none;border-radius:50px;padding:8px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:#FF8C42;cursor:pointer}
 
-    /* ========== SECTION BASE ========== */
-    .section { padding: 80px 40px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .sec-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
-    .sec-sub { font-size: .82rem; color: var(--text-light); letter-spacing: .1em; margin-bottom: 40px; text-transform: uppercase; }
+/* PROFILE */
+.prof-header{background:linear-gradient(135deg,#FF8C42,#FFB380);padding:40px 20px 24px;text-align:center;color:#fff}
+.prof-avatar{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.3);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px;border:3px solid rgba(255,255,255,0.6)}
+.prof-name{font-size:22px;font-weight:900;margin-bottom:4px}
+.prof-member-badge{display:inline-block;background:rgba(255,255,255,0.25);border-radius:50px;padding:4px 14px;font-size:12px;font-weight:700}
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px}
+.stat-box{background:#fff;border-radius:16px;padding:14px;text-align:center;box-shadow:0 4px 16px rgba(255,140,66,0.1)}
+.stat-num{font-size:24px;font-weight:900;color:#FF8C42}
+.stat-label{font-size:10px;color:#9B9B9B;font-weight:700;margin-top:2px}
+.prof-body{padding:0 16px 16px}
+.badges-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.badge-item{text-align:center}
+.badge-circle{width:56px;height:56px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:26px}
+.badge-circle.earned{background:linear-gradient(135deg,#FFD166,#FF8C42)}
+.badge-circle.locked{background:#F0F0F0;filter:grayscale(1);opacity:0.5}
+.badge-name{font-size:10px;font-weight:700;color:#5A5A5A}
+.goal-card{background:linear-gradient(135deg,#FFF8F0,#FFE4CC);border-radius:20px;padding:16px;margin-bottom:12px}
+.settings-list{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(255,140,66,0.08);margin-bottom:16px}
+.settings-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid #F5F5F5;cursor:pointer}
+.settings-item:last-child{border-bottom:none}
+.settings-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.settings-label{flex:1;font-size:14px;font-weight:700;color:#2D2D2D}
+.consult-btn{background:linear-gradient(135deg,#FF8C42,#FF6B1A);color:#fff;border:none;border-radius:20px;padding:16px;width:100%;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 6px 20px rgba(255,140,66,0.35);margin-bottom:16px}
 
-    /* ========== SERVICES ========== */
-    .services { background: #fff; }
-    .services .sec-title { font-size: 1.4rem; }
-    .services-intro { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
-    .services-intro-text p { font-size: .9rem; color: var(--text-light); line-height: 1.9; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;
-    }
-    .service-item { cursor: pointer; }
-    .service-thumb {
-      aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; margin-bottom: 10px;
-      background: #e8e8e8; display: flex; align-items: center; justify-content: center; font-size: 2rem;
-      transition: transform .3s;
-    }
-    .service-item:hover .service-thumb { transform: scale(1.03); }
-    .service-label { display: flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 700; }
-    .service-label::before { content: ''; display: inline-block; width: 28px; height: 3px; background: var(--teal); flex-shrink: 0; }
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes drawLine{from{stroke-dashoffset:500}to{stroke-dashoffset:0}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.fade-in-up{animation:fadeInUp 0.4s ease both}
+.pulse{animation:pulse 3s infinite}
 
-    /* ========== ABOUT ========== */
-    .about { background: var(--gray); position: relative; overflow: hidden; }
-    .about-watermark {
-      position: absolute; bottom: -20px; right: -20px;
-      font-size: clamp(80px, 14vw, 160px); font-weight: 900;
-      color: rgba(0,0,0,.04); pointer-events: none; line-height: 1;
-      font-style: italic; white-space: nowrap;
-    }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
-    .about-en { font-size: .85rem; font-weight: 700; color: var(--teal); letter-spacing: .12em; margin-bottom: 20px; text-transform: uppercase; }
-    .about-text p { font-size: .88rem; line-height: 2; color: var(--text-light); margin-bottom: 12px; }
-    .btn-teal {
-      display: inline-block; background: var(--teal); color: #fff;
-      padding: 12px 32px; border-radius: 4px; font-size: .85rem; font-weight: 700;
-      margin-top: 24px; transition: opacity .2s;
-    }
-    .btn-teal:hover { opacity: .85; }
-    .about-photo { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; background: #ccc; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-
-    /* ========== INTERVIEW ========== */
-    .interview { background: #fff; padding-bottom: 60px; }
-    .interview-label { font-size: .75rem; letter-spacing: .15em; color: var(--text-light); margin-bottom: 24px; text-align: center; }
-    .carousel-wrap { position: relative; overflow: hidden; }
-    .carousel-track { display: flex; transition: transform .5s cubic-bezier(.4,0,.2,1); }
-    .carousel-item { min-width: 25%; padding: 0 12px; }
-    .carousel-photo {
-      aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; margin-bottom: 12px;
-      background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 3rem;
-    }
-    .carousel-name { font-size: .85rem; font-weight: 700; }
-    .carousel-pos { font-size: .75rem; color: var(--text-light); }
-    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer; transition: background .3s; }
-    .dot.active { background: var(--teal); }
-
-    /* ========== CROSSTALK ========== */
-    .crosstalk { background: #fff; padding-top: 0; }
-    .crosstalk-label { font-size: .75rem; letter-spacing: .15em; color: var(--text-light); margin-bottom: 16px; }
-    .crosstalk-photo { border-radius: 8px; overflow: hidden; aspect-ratio: 16/7; background: #ccc; display: flex; align-items: center; justify-content: center; font-size: 4rem; max-width: 640px; }
-
-    /* ========== CULTURE ========== */
-    .culture {
-      position: relative; min-height: 480px;
-      background: #2c2c2c; display: flex; align-items: center; overflow: hidden;
-    }
-    .culture-bg { position: absolute; inset: 0; background: #555; display: flex; align-items: center; justify-content: center; font-size: 6rem; opacity: .6; }
-    .culture-card {
-      position: relative; z-index: 2; background: rgba(255,255,255,.92);
-      border-radius: 8px; padding: 40px 36px; max-width: 340px; margin-left: 80px;
-    }
-    .culture-card .en { font-size: .8rem; font-weight: 700; color: var(--teal); letter-spacing: .12em; margin-bottom: 12px; }
-    .culture-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; }
-    .culture-card p { font-size: .85rem; line-height: 1.9; color: var(--text-light); }
-
-    /* ========== NEWS + VOICE ========== */
-    .news-voice { background: #fff; }
-    .nv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-    .nv-title { font-size: 1rem; font-weight: 800; margin-bottom: 20px; }
-    .news-list { list-style: none; }
-    .news-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
-    .news-date { font-size: .75rem; color: var(--text-light); white-space: nowrap; margin-top: 2px; }
-    .news-link { font-size: .85rem; color: var(--text); transition: color .2s; }
-    .news-link:hover { color: var(--teal); }
-    .voice-card { display: flex; gap: 20px; align-items: center; border: 1px solid #eee; border-radius: 8px; padding: 20px; }
-    .voice-photo { width: 100px; height: 100px; border-radius: 8px; overflow: hidden; flex-shrink: 0; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .voice-text p { font-size: .83rem; line-height: 1.8; color: var(--text-light); }
-    .voice-name { font-size: .8rem; font-weight: 700; margin-top: 8px; }
-
-    /* ========== CTA ========== */
-    .cta {
-      background: linear-gradient(90deg, var(--cyan) 0%, var(--pink) 100%);
-      padding: 60px 40px; text-align: center;
-    }
-    .cta p { font-size: 1rem; color: #fff; margin-bottom: 24px; font-weight: 600; letter-spacing: .05em; }
-    .btn-cta {
-      display: inline-block; background: #fff; color: var(--teal);
-      padding: 14px 44px; border-radius: 40px; font-size: .9rem; font-weight: 800;
-      box-shadow: 0 4px 20px rgba(0,0,0,.12); transition: transform .2s, box-shadow .2s;
-    }
-    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
-
-    /* ========== MARQUEE ========== */
-    .marquee-wrap { background: var(--dark); padding: 20px 0; overflow: hidden; }
-    .marquee-track { display: flex; width: max-content; animation: marquee 18s linear infinite; }
-    .marquee-track span {
-      font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; color: #fff;
-      padding: 0 32px; letter-spacing: .08em; white-space: nowrap;
-    }
-    .marquee-track span.pink { color: #f06292; }
-    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-
-    /* ========== FOOTER ========== */
-    footer { background: var(--dark); color: rgba(255,255,255,.55); padding: 60px 40px 32px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 200px 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-    .footer-logo { font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
-    .footer-desc { font-size: .78rem; line-height: 1.8; }
-    .footer-col h4 { font-size: .82rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul li a { font-size: .78rem; transition: color .2s; }
-    .footer-col ul li a:hover { color: var(--teal); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-social { display: flex; gap: 16px; }
-    .footer-social a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .85rem; transition: background .2s; }
-    .footer-social a:hover { background: var(--teal); }
-    .footer-copy { font-size: .75rem; }
-
-    /* ========== FADE-IN ANIMATION ========== */
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 900px) {
-      .hero-content { grid-template-columns: 1fr; padding-top: 100px; }
-      .hero-right { display: none; }
-      .services-intro { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-inner { grid-template-columns: 1fr; }
-      .nv-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .carousel-item { min-width: 50%; }
-      .culture-card { margin: 40px 24px; }
-    }
-    @media (max-width: 600px) {
-      .section { padding: 60px 20px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .carousel-item { min-width: 100%; }
-      .footer-top { grid-template-columns: 1fr; }
-      header { padding: 16px 20px; }
-      header nav { display: none; }
-    }
-  </style>
+@media(max-width:420px){
+  body{padding:0;align-items:flex-start}
+  .phone-frame{width:100vw;height:100vh;border-radius:0;box-shadow:none}
+  .phone-notch{display:none}
+}
+</style>
 </head>
 <body>
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+<div class="phone-frame" id="app">
+  <div class="phone-notch"></div>
 
-  <!-- ===== HEADER ===== -->
-  <header id="header">
-    <div class="logo-text">株式会社仙拓</div>
-    <nav>
-      <a href="#services">サービス</a>
-      <a href="#about">私たちについて</a>
-      <a href="#interview">インタビュー</a>
-      <a href="#culture">カルチャー</a>
-      <a href="#news">お知らせ</a>
-      <a href="#contact">採用情報</a>
-    </nav>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg-text">NOW THE FUTURE IS</div>
-    <div class="hero-content">
-      <div class="hero-left">
-        <p class="hero-tag">Sen-Taku, Inc.</p>
-        <h1 class="hero-catch">未来は今始まる</h1>
-        <p class="hero-catch-en">The Future Starts Now</p>
-        <div class="hero-scroll">
-          <span>Scroll</span>
-          <div class="scroll-line"></div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="photo-card pc1"><div class="ph">💼</div></div>
-        <div class="photo-card pc2"><div class="ph">🌐</div></div>
-        <div class="photo-card pc3"><div class="ph">🤝</div></div>
-        <div class="photo-card pc4"><div class="ph">✨</div></div>
-      </div>
+  <!-- ONBOARDING -->
+  <div class="screen active" id="screen-onboarding">
+    <div class="ob-header">
+      <button class="skip-btn" onclick="goToScreen('home')">スキップ</button>
     </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="section services" id="services">
-    <div class="section-inner">
-      <div class="services-intro fade-in">
-        <div>
-          <p class="sec-sub">Our Services</p>
-          <h2 class="sec-title">当事務所の<br>4つのサービス</h2>
+    <div style="overflow:hidden">
+      <div class="onboarding-slides" id="ob-slides">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="#FFF0E6"/>
+            <ellipse cx="100" cy="148" rx="38" ry="26" fill="#FF8C42"/>
+            <circle cx="100" cy="100" r="42" fill="#FF8C42"/>
+            <polygon points="65,68 55,42 80,62" fill="#FF8C42"/><polygon points="68,66 60,48 78,63" fill="#FFB380"/>
+            <polygon points="135,68 145,42 120,62" fill="#FF8C42"/><polygon points="132,66 140,48 122,63" fill="#FFB380"/>
+            <path d="M80,72 Q100,66 120,72" stroke="#E07A35" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M76,82 Q100,76 124,82" stroke="#E07A35" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M85,100 Q90,93 95,100" stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M105,100 Q110,93 115,100" stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="80" cy="108" r="8" fill="#FFB380" opacity="0.6"/>
+            <circle cx="120" cy="108" r="8" fill="#FFB380" opacity="0.6"/>
+            <ellipse cx="100" cy="110" rx="4" ry="3" fill="#FF6B6B"/>
+            <path d="M96,113 Q100,118 104,113" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <line x1="60" y1="108" x2="86" y2="112" stroke="#8B5E3C" stroke-width="1.5" opacity="0.6"/>
+            <line x1="58" y1="114" x2="86" y2="115" stroke="#8B5E3C" stroke-width="1.5" opacity="0.6"/>
+            <line x1="114" y1="112" x2="140" y2="108" stroke="#8B5E3C" stroke-width="1.5" opacity="0.6"/>
+            <line x1="114" y1="115" x2="142" y2="114" stroke="#8B5E3C" stroke-width="1.5" opacity="0.6"/>
+            <rect x="60" y="148" width="80" height="30" rx="10" fill="#fff" opacity="0.9"/>
+            <text x="100" y="167" text-anchor="middle" font-family="Nunito,sans-serif" font-size="14" font-weight="900" fill="#FF8C42">NISA</text>
+          </svg>
+          <h2>こんにちは！<br>ニャイサです🐱</h2>
+          <p>NISAって難しそう…でも大丈夫！<br>猫でも分かるやさしい言葉で<br>一緒に学んでいきましょう✨</p>
         </div>
-        <div class="services-intro-text">
-          <p>
-            仙拓はホームページ制作・名刺制作を通じて、お客様の課題解決に取り組んでいます。<br>
-            障害のある方・多様な背景を持つスタッフが力を合わせ、唯一無二の視点でサービスを提供します。<br>
-            働きたい人が誰でも働ける社会の実現を目指し、クラウドソーシングや業務支援にも取り組んでいます。
-          </p>
-        </div>
-      </div>
-      <div class="services-grid">
-        <div class="service-item fade-in">
-          <div class="service-thumb">🌐</div>
-          <p class="service-label">ホームページ制作</p>
-        </div>
-        <div class="service-item fade-in">
-          <div class="service-thumb">🪪</div>
-          <p class="service-label">名刺制作</p>
-        </div>
-        <div class="service-item fade-in">
-          <div class="service-thumb">💼</div>
-          <p class="service-label">ChallengeDomain</p>
-        </div>
-        <div class="service-item fade-in">
-          <div class="service-thumb">☁️</div>
-          <p class="service-label">クラウド活用支援</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section about" id="about">
-    <div class="about-watermark">SENTAKU</div>
-    <div class="section-inner">
-      <div class="about-inner">
-        <div class="about-text fade-in">
-          <p class="about-en">About us</p>
-          <p>
-            私たちパートナーは、立会いに立てずとも、<br>
-            当社のサポートによりいつも心に寄り添える存在でありたいと考えています。
-          </p>
-          <p>
-            仙拓のメンバーは、ひとりひとりが自分の可能性を諦めません。<br>
-            障害があっても、どんな状況にあっても、前向きに挑戦し続けます。
-          </p>
-          <p>
-            より多くの方が自分らしく活躍できるように、<br>
-            私たちは世界中の人に新しい選択肢を届け続けていきます。
-          </p>
-          <a href="#" class="btn-teal">詳しく見る</a>
-        </div>
-        <div class="about-photo fade-in">👥</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INTERVIEW ===== -->
-  <section class="section interview" id="interview">
-    <div class="section-inner">
-      <p class="interview-label">← インタビュー</p>
-      <div class="carousel-wrap">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">佐藤 仙務</p>
-            <p class="carousel-pos">代表取締役社長</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">田中 花子</p>
-            <p class="carousel-pos">Webデザイナー</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">山本 太郎</p>
-            <p class="carousel-pos">エンジニア</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">鈴木 あい</p>
-            <p class="carousel-pos">コンサルタント</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">加藤 健一</p>
-            <p class="carousel-pos">クリエイター</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-photo">👤</div>
-            <p class="carousel-name">伊藤 みか</p>
-            <p class="carousel-pos">マーケター</p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-
-    <!-- CROSSTALK -->
-    <div class="section-inner" style="margin-top:48px;">
-      <p class="crosstalk-label">← クロストーク</p>
-      <div class="crosstalk-photo">🌿</div>
-    </div>
-  </section>
-
-  <!-- ===== CULTURE ===== -->
-  <section class="culture" id="culture">
-    <div class="culture-bg">🏢</div>
-    <div class="culture-card fade-in">
-      <p class="en">Culture</p>
-      <h3>私たちらしい<br>はたらき方をしよう。</h3>
-      <p>
-        リモートワークやクラウドサービスを活用し、<br>
-        すべての人がいきいきと働ける環境を整えています。<br>
-        チームの多様性が仙拓の最大の強みです。
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== NEWS + VOICE ===== -->
-  <section class="section news-voice" id="news">
-    <div class="section-inner">
-      <div class="nv-grid">
-        <div class="fade-in">
-          <h3 class="nv-title">お知らせ</h3>
-          <ul class="news-list">
-            <li class="news-item">
-              <span class="news-date">2024/11/01</span>
-              <a class="news-link" href="#">ランサーズ株式会社との業務提携を発表しました</a>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2024/09/15</span>
-              <a class="news-link" href="#">ChallengeDomainが新機能をリリースしました</a>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2024/08/10</span>
-              <a class="news-link" href="#">kintone活用事例として掲載されました</a>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2024/06/20</span>
-              <a class="news-link" href="#">リモートワーク事例紹介動画を公開しました</a>
-            </li>
-            <li class="news-item">
-              <span class="news-date">2024/04/01</span>
-              <a class="news-link" href="#">てっぺんMATSURIにて代表が登壇しました</a>
-            </li>
-          </ul>
-        </div>
-        <div class="fade-in">
-          <h3 class="nv-title">お客様の声</h3>
-          <div class="voice-card">
-            <div class="voice-photo">😊</div>
-            <div class="voice-text">
-              <p>仙拓さんにホームページを作っていただいてから、問い合わせが大幅に増えました。丁寧なヒアリングと迅速な対応に大変満足しています。</p>
-              <p class="voice-name">— 製造業 A社様</p>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <svg width="160" height="160" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="#E0F4FB"/>
+            <rect x="38" y="118" width="28" height="42" rx="4" fill="#7EC8E3"/>
+            <rect x="42" y="112" width="28" height="42" rx="4" fill="#FF8C42"/>
+            <rect x="46" y="106" width="28" height="42" rx="4" fill="#FFD166"/>
+            <polyline points="85,158 100,128 115,138 142,95" stroke="#5CBF8A" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="142,86 150,104 134,104" fill="#5CBF8A"/>
+            <circle cx="100" cy="68" r="26" fill="#FF8C42"/>
+            <polygon points="83,48 77,33 92,44" fill="#FF8C42"/><polygon points="85,46 80,35 91,43" fill="#FFB380"/>
+            <polygon points="117,48 123,33 108,44" fill="#FF8C42"/><polygon points="115,46 120,35 109,43" fill="#FFB380"/>
+            <path d="M90,72 Q96,66 102,72" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M100,72 Q106,66 112,72" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="100" cy="79" rx="3" ry="2" fill="#FF6B6B"/>
+          </svg>
+          <h2>NISAを一緒に<br>学ぼう！</h2>
+          <div style="text-align:left;width:100%">
+            <div class="feature-item">
+              <div class="feature-icon" style="background:#FFF0E6">📖</div>
+              <div><div style="font-size:14px;font-weight:800;color:#2D2D2D">やさしい解説</div><div style="font-size:12px;color:#9B9B9B;font-weight:600">難しい言葉は使いません</div></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon" style="background:#E0F4FB">🎯</div>
+              <div><div style="font-size:14px;font-weight:800;color:#2D2D2D">診断でぴったりプラン</div><div style="font-size:12px;color:#9B9B9B;font-weight:600">あなたに合った提案</div></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon" style="background:#E8F8F0">📊</div>
+              <div><div style="font-size:14px;font-weight:800;color:#2D2D2D">シミュレーション</div><div style="font-size:12px;color:#9B9B9B;font-weight:600">将来の資産を試算</div></div>
             </div>
           </div>
         </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <div style="font-size:52px;margin:8px 0">🐱</div>
+          <h2 style="font-size:22px">プロフィール設定</h2>
+          <p style="margin-bottom:14px">あなたのことを教えてください！</p>
+          <div style="width:100%;text-align:left">
+            <label style="font-size:12px;font-weight:800;color:#9B9B9B;margin-bottom:6px;display:block">お名前</label>
+            <input class="profile-input" type="text" placeholder="例：田中さくら" id="user-name-input" value="さくら">
+            <label style="font-size:12px;font-weight:800;color:#9B9B9B;margin-bottom:8px;display:block">投資の経験は？</label>
+            <div class="exp-options">
+              <div class="exp-option selected" onclick="selectExp(this)">🐣<br>初めて</div>
+              <div class="exp-option" onclick="selectExp(this)">🌱<br>少しある</div>
+              <div class="exp-option" onclick="selectExp(this)">🌳<br>経験あり</div>
+            </div>
+            <button class="btn-primary" onclick="startApp()">はじめる 🚀</button>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="cta" id="contact">
-    <p>一緒に、新しい働き方を創りませんか？</p>
-    <a href="mailto:info@sen-taku.co.jp" class="btn-cta">お問い合わせフォーム</a>
-  </section>
-
-  <!-- ===== MARQUEE ===== -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
-      <span>OPEN JOBS</span><span class="pink">✦</span>
-      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
-      <span>OPEN JOBS</span><span class="pink">✦</span>
-      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
-      <span>OPEN JOBS</span><span class="pink">✦</span>
-      <span>CHALLENGE DOMAIN</span><span class="pink">✦</span>
-      <span>OPEN JOBS</span><span class="pink">✦</span>
+    <div class="ob-dots">
+      <div class="ob-dot active" id="dot-0"></div>
+      <div class="ob-dot" id="dot-1"></div>
+      <div class="ob-dot" id="dot-2"></div>
+    </div>
+    <div style="padding:0 24px 16px;display:flex;gap:12px" id="ob-nav">
+      <button class="btn-secondary" id="ob-back-btn" onclick="obBack()" style="display:none;flex:1">戻る</button>
+      <button class="btn-primary" id="ob-next-btn" onclick="obNext()" style="flex:2">次へ →</button>
     </div>
   </div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div>
-          <p class="footer-logo">株式会社仙拓</p>
-          <p class="footer-desc">働きたい人が、誰でも働ける社会へ。<br>世界中の人に新しい選択肢を。</p>
-        </div>
-        <div class="footer-col">
-          <h4>よくあるご質問</h4>
-          <ul>
-            <li><a href="#">サービスについて</a></li>
-            <li><a href="#">料金について</a></li>
-            <li><a href="#">納期について</a></li>
-            <li><a href="#">支払い方法</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>サービス</h4>
-          <ul>
-            <li><a href="#">ホームページ制作</a></li>
-            <li><a href="#">名刺制作</a></li>
-            <li><a href="#">ChallengeDomain</a></li>
-            <li><a href="#">クラウド支援</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>広告フォーム</h4>
-          <ul>
-            <li><a href="#">採用情報</a></li>
-            <li><a href="#">業務委託</a></li>
-            <li><a href="#">パートナー募集</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>会社情報</h4>
-          <ul>
-            <li><a href="#">会社概要</a></li>
-            <li><a href="#">代表メッセージ</a></li>
-            <li><a href="#">プライバシーポリシー</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-          </ul>
+  <!-- HOME -->
+  <div class="screen" id="screen-home">
+    <div class="home-header">
+      <div class="home-greeting" id="home-greeting">おはよう、さくらさん 🌟</div>
+      <div style="font-size:13px;opacity:0.9;font-weight:600">今日も一緒に学んでいこう！</div>
+      <div class="streak-badge">🔥 7日連続学習中！</div>
+    </div>
+    <div class="home-body">
+      <div class="speech-bubble-wrap">
+        <svg width="50" height="50" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="24" fill="#FF8C42"/>
+          <polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/>
+          <polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/>
+          <path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/>
+          <path d="M22,35 Q26,39 30,35" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <circle cx="19" cy="31" r="5" fill="#FFB380" opacity="0.5"/>
+          <circle cx="33" cy="31" r="5" fill="#FFB380" opacity="0.5"/>
+        </svg>
+        <div class="speech-bubble">
+          <div class="bubble-title">💬 今日のひとこと</div>
+          <p>投資は長く続けることが大事！<br>今日も少しずつ学んでいこうにゃ✨</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div class="footer-social">
-          <a href="#" title="Instagram">📷</a>
-          <a href="#" title="Twitter">🐦</a>
-          <a href="#" title="Facebook">📘</a>
-          <a href="#" title="YouTube">▶️</a>
+
+      <div class="savings-card fade-in-up">
+        <div style="font-size:11px;color:#9B9B9B;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">今月の積立状況</div>
+        <div class="savings-amount">¥10,000</div>
+        <div style="font-size:12px;color:#9B9B9B;font-weight:600;margin-bottom:10px">目標 ¥33,333（年間上限の1/12）</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="home-progress" style="width:0%"></div>
         </div>
-        <p class="footer-copy">&copy; 2024 株式会社仙拓. All Rights Reserved.</p>
+        <div style="font-size:12px;color:#5CBF8A;font-weight:700;margin-top:6px">✅ 30% 達成！</div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="section-title" style="font-size:15px;margin-bottom:8px">📈 資産推移グラフ（6ヶ月）</div>
+        <svg width="100%" height="80" viewBox="0 0 343 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF8C42" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#FF8C42" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,62 C40,58 60,52 80,48 C110,42 130,36 160,30 C190,24 220,18 260,14 C290,11 320,9 343,7" stroke="#FF8C42" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="500" stroke-dashoffset="500" style="animation:drawLine 1.5s ease 0.5s forwards"/>
+          <path d="M0,62 C40,58 60,52 80,48 C110,42 130,36 160,30 C190,24 220,18 260,14 C290,11 320,9 343,7 L343,78 L0,78Z" fill="url(#chartGrad)"/>
+          <text x="4" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">1月</text>
+          <text x="58" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">2月</text>
+          <text x="115" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">3月</text>
+          <text x="172" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">4月</text>
+          <text x="229" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">5月</text>
+          <text x="295" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">6月</text>
+        </svg>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#7EC8E3,#4A9FB5);border-radius:20px;padding:16px;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:14px;cursor:pointer" onclick="goToScreen('learning')">
+        <div style="width:48px;height:48px;background:rgba(255,255,255,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">📚</div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:800;margin-bottom:4px">今日のレッスン</div>
+          <div style="font-size:12px;opacity:0.9">分散投資とは？ · 3分 · +50XP</div>
+        </div>
+        <i class="fas fa-chevron-right" style="opacity:0.7"></i>
+      </div>
+
+      <div class="card" style="margin-bottom:14px;display:flex;align-items:center;gap:14px">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#FFD166,#FF8C42);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">🎯</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:800;color:#2D2D2D">デイリーチャレンジ</div>
+          <div style="font-size:12px;color:#9B9B9B;font-weight:600">今日のクイズに挑戦して+30XP！</div>
+        </div>
+        <span class="tag tag-orange">未達成</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-title">🐱 ニャイサのワンポイント</div>
+        <div style="font-size:13px;color:#2D2D2D;line-height:1.6;font-weight:600">つみたてNISAの<span style="background:#FFD166;padding:0 4px;border-radius:4px;font-weight:800">年間上限は40万円</span>。月々33,333円積み立てると満額使えるにゃ！でも1,000円からでも大丈夫🎵</div>
       </div>
     </div>
-  </footer>
+    <div class="bottom-nav">
+      <div class="nav-item active" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+    </div>
+  </div>
 
-  <script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 60);
-    });
+  <!-- DIAGNOSIS -->
+  <div class="screen" id="screen-diagnosis">
+    <div class="diag-header">
+      <div class="diag-title">あなたにぴったりの<br>NISAを探そう！🔍</div>
+      <div style="font-size:13px;color:#5A5A5A;font-weight:600">5つの質問に答えてね</div>
+    </div>
+    <div class="diag-progress"><div class="diag-progress-fill" id="diag-progress-fill" style="width:20%"></div></div>
+    <div class="diag-body" id="diag-body"></div>
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
+      <div class="nav-item active" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+    </div>
+  </div>
 
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    fadeEls.forEach(el => observer.observe(el));
+  <!-- SIMULATION -->
+  <div class="screen" id="screen-simulation">
+    <div class="sim-header">
+      <div style="font-size:20px;font-weight:900;margin-bottom:4px">将来いくらになるかな？💰</div>
+      <div style="font-size:13px;opacity:0.9;font-weight:600">スライダーを動かしてみよう！</div>
+    </div>
+    <div class="sim-body">
+      <div class="sim-result-card pulse">
+        <div style="font-size:12px;opacity:0.9;font-weight:700;margin-bottom:6px">📊 試算結果</div>
+        <div class="sim-result-amount" id="sim-result">¥3,926万</div>
+        <div style="font-size:13px;opacity:0.9;font-weight:600" id="sim-sub">元本 ¥3,600万 ＋ 運用益 ¥326万</div>
+      </div>
 
-    const track = document.getElementById('carouselTrack');
-    const dotsWrap = document.getElementById('carouselDots');
-    const items = track.querySelectorAll('.carousel-item');
-    const visibleCount = () => window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 4;
-    let current = 0, totalSlides = 0, dots = [];
+      <div class="slider-group">
+        <div class="slider-label">月々の積立額 <span class="slider-val" id="monthly-val">¥10,000</span></div>
+        <input type="range" id="monthly-slider" min="1000" max="100000" step="1000" value="10000" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">積立期間 <span class="slider-val" id="years-val">30年</span></div>
+        <input type="range" id="years-slider" min="1" max="30" step="1" value="30" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">想定利回り <span class="slider-val" id="rate-val">5%</span></div>
+        <input type="range" id="rate-slider" min="1" max="10" step="0.5" value="5" oninput="updateSim()">
+      </div>
 
-    function buildDots() {
-      dotsWrap.innerHTML = ''; dots = [];
-      totalSlides = Math.ceil(items.length / visibleCount());
-      for (let i = 0; i < totalSlides; i++) {
-        const d = document.createElement('div');
-        d.className = 'dot' + (i === 0 ? ' active' : '');
-        d.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(d); dots.push(d);
-      }
-    }
+      <div class="tax-callout">
+        <div style="font-size:28px">🎉</div>
+        <div style="font-size:13px;font-weight:700;color:#2D2D2D;line-height:1.5"><strong style="color:#5CBF8A">NISAなら税金ゼロ！</strong><br>通常は運用益に約20%の税金がかかりますが、NISAだと全額あなたのものになります！</div>
+      </div>
 
-    function goTo(n) {
-      current = Math.max(0, Math.min(n, totalSlides - 1));
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    }
+      <div class="card" style="margin-bottom:12px">
+        <div style="font-size:15px;font-weight:800;color:#2D2D2D">積立額 vs 運用益</div>
+        <div class="bar-chart" id="sim-bar-chart"></div>
+        <div style="display:flex;gap:16px;margin-top:8px;justify-content:center">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#5A5A5A;font-weight:700"><div style="width:12px;height:12px;background:#C5E8F7;border-radius:3px"></div>積立元本</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#5A5A5A;font-weight:700"><div style="width:12px;height:12px;background:#FF8C42;border-radius:3px"></div>運用益</div>
+        </div>
+      </div>
 
-    buildDots();
-    window.addEventListener('resize', () => { buildDots(); goTo(0); });
-    setInterval(() => goTo(current + 1 < totalSlides ? current + 1 : 0), 4000);
+      <div class="fun-comparison">
+        <div style="font-size:14px;font-weight:800;color:#FF8C42" id="fun-compare">🏠 これは東京の家賃約131ヶ月分と同じ！</div>
+        <div style="font-size:12px;color:#5A5A5A;font-weight:600;margin-top:4px">（月3万円の家賃換算）</div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
+      <div class="nav-item active" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+    </div>
+  </div>
 
-    const photoCards = document.querySelectorAll('.photo-card');
-    document.querySelector('.hero').addEventListener('mousemove', (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const cx = (e.clientX - rect.left) / rect.width - 0.5;
-      const cy = (e.clientY - rect.top) / rect.height - 0.5;
-      photoCards.forEach((card, i) => {
-        const f = (i % 2 === 0 ? 1 : -1) * 6;
-        card.style.transform = `rotate(${[3,-4,-2,5][i]}deg) translate(${cx*f}px,${cy*f}px)`;
-      });
-    });
-  </script>
+  <!-- LEARNING -->
+  <div class="screen" id="screen-learning">
+    <div class="learn-header">
+      <div class="learn-title">ニャイサ学習塾 📚</div>
+      <div class="level-row">
+        <div class="level-badge">⭐ レベル2</div>
+        <div class="xp-bar"><div class="xp-fill"></div></div>
+        <div style="font-size:12px;font-weight:700;opacity:0.9">650/1000 XP</div>
+      </div>
+    </div>
+    <div class="learn-body">
+      <div class="speech-bubble-wrap" style="margin:0 0 12px">
+        <svg width="44" height="44" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="24" fill="#FF8C42"/>
+          <polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/>
+          <polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/>
+          <circle cx="22" cy="26" r="5" fill="#fff"/><circle cx="30" cy="26" r="5" fill="#fff"/>
+          <circle cx="23" cy="25" r="2.5" fill="#2D2D2D"/><circle cx="31" cy="25" r="2.5" fill="#2D2D2D"/>
+          <circle cx="24" cy="24" r="1" fill="#fff"/><circle cx="32" cy="24" r="1" fill="#fff"/>
+          <ellipse cx="26" cy="33" rx="3" ry="2" fill="#FF6B6B"/>
+          <path d="M22,36 Q26,40 30,36" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="speech-bubble">
+          <div class="bubble-title">💭 ニャイサより</div>
+          <p>順番に学ぶと理解しやすいにゃ！今は「分散投資」を一緒に学ぼう📖</p>
+        </div>
+      </div>
+
+      <div class="lesson-card done">
+        <div class="lesson-icon green">✅</div>
+        <div class="lesson-info">
+          <div class="lesson-title">NISAってなに？</div>
+          <div class="lesson-meta"><span class="lesson-duration">⏱ 3分</span><span class="lesson-xp">+50 XP</span><span class="tag tag-green" style="font-size:10px">完了！</span></div>
+        </div>
+      </div>
+      <div class="lesson-card done">
+        <div class="lesson-icon green">✅</div>
+        <div class="lesson-info">
+          <div class="lesson-title">投資ってこわくない</div>
+          <div class="lesson-meta"><span class="lesson-duration">⏱ 4分</span><span class="lesson-xp">+60 XP</span><span class="tag tag-green" style="font-size:10px">完了！</span></div>
+        </div>
+      </div>
+      <div class="lesson-card current" onclick="toggleLesson()">
+        <div class="lesson-icon orange">🎯</div>
+        <div class="lesson-info">
+          <div class="lesson-title">分散投資とは？</div>
+          <div class="lesson-meta"><span class="lesson-duration">⏱ 3分</span><span class="lesson-xp">+50 XP</span><span class="tag tag-orange" style="font-size:10px">学習中</span></div>
+        </div>
+        <div style="font-size:18px">▶️</div>
+        <div class="current-ribbon">今日のレッスン</div>
+      </div>
+
+      <div class="lesson-detail" id="lesson-detail" style="display:none">
+        <div style="font-size:17px;font-weight:900;color:#2D2D2D;margin-bottom:12px">🎯 分散投資とは？</div>
+        <div class="speech-bubble-wrap" style="margin:0 0 12px">
+          <svg width="36" height="36" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="24" fill="#FF8C42"/>
+            <polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/>
+            <polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/>
+            <path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/>
+          </svg>
+          <div class="speech-bubble">
+            <p>「卵は一つのカゴに盛るな」それが分散投資の考え方にゃ！</p>
+          </div>
+        </div>
+        <div class="lesson-content-block">
+          <p>分散投資とは、<span class="highlight">複数の商品に分けて</span>お金を投資することです。<br><br>例えば、1つの会社の株だけ買うと、その会社が倒産したら全部なくなります。でも100社に分散すると、1社がダメでも他の99社がカバーしてくれます！</p>
+        </div>
+        <div class="lesson-content-block" style="background:#E0F4FB">
+          <p style="font-size:13px;font-weight:700;color:#2D2D2D;margin-bottom:6px">🌍 インデックスファンドで簡単に分散！</p>
+          <p>「全世界株式」の投資信託を1つ買うだけで、<span class="highlight">世界中の数千社</span>に自動で分散できます。</p>
+        </div>
+        <button class="btn-primary" onclick="alert('🎉 レッスン完了！+50XP 獲得！\nすごいにゃ！継続は力なり！')">✅ 理解できた！+50XP</button>
+      </div>
+
+      <div class="lesson-card locked">
+        <div class="lesson-icon gray">🔒</div>
+        <div class="lesson-info">
+          <div class="lesson-title">暴落したらどうする？</div>
+          <div class="lesson-meta"><span class="lesson-duration">⏱ 5分</span><span class="lesson-xp">+70 XP</span><span class="tag" style="background:#F5F5F5;color:#9B9B9B;font-size:10px">ロック中</span></div>
+        </div>
+        <div style="font-size:18px">🔒</div>
+      </div>
+      <div class="lesson-card locked">
+        <div class="lesson-icon gray">🔒</div>
+        <div class="lesson-info">
+          <div class="lesson-title">長期投資の考え方</div>
+          <div class="lesson-meta"><span class="lesson-duration">⏱ 4分</span><span class="lesson-xp">+60 XP</span><span class="tag" style="background:#F5F5F5;color:#9B9B9B;font-size:10px">ロック中</span></div>
+        </div>
+        <div style="font-size:18px">🔒</div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
+      <div class="nav-item active" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS (accessible via diagnosis result or profile) -->
+  <div class="screen" id="screen-products">
+    <div class="prod-header">
+      <div style="font-size:20px;font-weight:900;color:#2D2D2D;margin-bottom:6px">ニャイサのおすすめ 🐱</div>
+      <div style="font-size:13px;color:#5A5A5A;font-weight:600;margin-bottom:10px">難しい商品をわかりやすく解説！</div>
+      <div class="speech-bubble-wrap" style="margin:0">
+        <svg width="40" height="40" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="24" fill="#FF8C42"/>
+          <polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/>
+          <polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/>
+          <path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/>
+        </svg>
+        <div class="speech-bubble" style="background:rgba(255,255,255,0.9)">
+          <p>手数料が安いほど長期的にはお得！信託報酬0.2%以下を選ぼうにゃ🎯</p>
+        </div>
+      </div>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterProd(this,'all')">すべて</button>
+      <button class="filter-tab" onclick="filterProd(this,'safe')">安心型</button>
+      <button class="filter-tab" onclick="filterProd(this,'balance')">バランス型</button>
+      <button class="filter-tab" onclick="filterProd(this,'growth')">成長型</button>
+    </div>
+    <div class="prod-body">
+      <div class="prod-card" data-type="growth">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="prod-name">eMAXIS Slim<br>全世界株式（オール・カントリー）</div>
+          <div class="prod-risk-badge prod-risk-mid">📈 バランス</div>
+        </div>
+        <div style="display:flex;gap:12px;margin-bottom:10px;align-items:center">
+          <div style="color:#FFD166;font-size:13px">⭐⭐⭐⭐⭐</div>
+          <div style="font-size:12px;color:#5A5A5A;font-weight:700">信託報酬 <strong style="color:#FF8C42">0.1133%</strong></div>
+        </div>
+        <div class="prod-comment">
+          <div style="font-size:20px">🐱</div>
+          <div class="prod-comment-text">世界中の約3,000社に一気に分散！「全世界に投資したい」ならまずこれにゃ。「オルカン」って呼ばれてる人気No.1商品！</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="tag tag-blue">つみたてNISA対応 ✅</span>
+          <button class="prod-btn">くわしく見る</button>
+        </div>
+      </div>
+
+      <div class="prod-card" data-type="growth">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="prod-name">eMAXIS Slim<br>米国株式（S&amp;P500）</div>
+          <div class="prod-risk-badge prod-risk-high">🚀 成長型</div>
+        </div>
+        <div style="display:flex;gap:12px;margin-bottom:10px;align-items:center">
+          <div style="color:#FFD166;font-size:13px">⭐⭐⭐⭐⭐</div>
+          <div style="font-size:12px;color:#5A5A5A;font-weight:700">信託報酬 <strong style="color:#FF8C42">0.09372%</strong></div>
+        </div>
+        <div class="prod-comment">
+          <div style="font-size:20px">🐱</div>
+          <div class="prod-comment-text">アップル・マイクロソフト・アマゾンなどアメリカの超優良企業500社に投資！手数料が業界最安水準にゃ🏆</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="tag tag-blue">つみたてNISA対応 ✅</span>
+          <button class="prod-btn">くわしく見る</button>
+        </div>
+      </div>
+
+      <div class="prod-card" data-type="growth">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="prod-name">たわらノーロード<br>先進国株式</div>
+          <div class="prod-risk-badge prod-risk-mid">📈 バランス</div>
+        </div>
+        <div style="display:flex;gap:12px;margin-bottom:10px;align-items:center">
+          <div style="color:#FFD166;font-size:13px">⭐⭐⭐⭐</div>
+          <div style="font-size:12px;color:#5A5A5A;font-weight:700">信託報酬 <strong style="color:#FF8C42">0.1023%</strong></div>
+        </div>
+        <div class="prod-comment">
+          <div style="font-size:20px">🐱</div>
+          <div class="prod-comment-text">日本以外の先進国23ヵ国・約1,300社に投資！「ノーロード」＝購入手数料ゼロで始められるにゃ。</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="tag tag-blue">つみたてNISA対応 ✅</span>
+          <button class="prod-btn">くわしく見る</button>
+        </div>
+      </div>
+
+      <div class="prod-card" data-type="balance">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="prod-name">eMAXIS Slim<br>バランス（8資産均等型）</div>
+          <div class="prod-risk-badge prod-risk-low">🛡 安心型</div>
+        </div>
+        <div style="display:flex;gap:12px;margin-bottom:10px;align-items:center">
+          <div style="color:#FFD166;font-size:13px">⭐⭐⭐⭐</div>
+          <div style="font-size:12px;color:#5A5A5A;font-weight:700">信託報酬 <strong style="color:#FF8C42">0.143%</strong></div>
+        </div>
+        <div class="prod-comment">
+          <div style="font-size:20px">🐱</div>
+          <div class="prod-comment-text">株・債券・不動産8種類に均等分散！値動きが穏やかで「安定重視」の方におすすめにゃ😊</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="tag tag-green">安定重視 ✅</span>
+          <button class="prod-btn">くわしく見る</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="screen" id="screen-profile">
+    <div class="prof-header">
+      <div class="prof-avatar">🐱</div>
+      <div class="prof-name" id="prof-name">さくらさん</div>
+      <div class="prof-member-badge">🌟 シルバー会員</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">🔥 連続日数</div></div>
+      <div class="stat-box"><div class="stat-num">2</div><div class="stat-label">📚 完了レッスン</div></div>
+      <div class="stat-box"><div class="stat-num">650</div><div class="stat-label">⭐ 獲得XP</div></div>
+    </div>
+    <div class="prof-body">
+      <div class="card" style="margin-bottom:12px">
+        <div class="section-title" style="font-size:15px">🏅 バッジコレクション</div>
+        <div class="badges-grid">
+          <div class="badge-item"><div class="badge-circle earned">🐣</div><div class="badge-name">初心者</div></div>
+          <div class="badge-item"><div class="badge-circle earned">📚</div><div class="badge-name">学習者</div></div>
+          <div class="badge-item"><div class="badge-circle locked">💪</div><div class="badge-name">挑戦者</div></div>
+          <div class="badge-item"><div class="badge-circle locked">🌟</div><div class="badge-name">マスター</div></div>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div style="font-size:14px;font-weight:800;color:#2D2D2D;margin-bottom:10px">🎯 NISA目標設定</div>
+        <div style="font-size:28px;font-weight:900;color:#FF8C42;margin-bottom:4px">¥5,000,000</div>
+        <div style="font-size:12px;color:#5A5A5A;font-weight:600;margin-bottom:8px">老後の資金として20年で達成目標</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="goal-progress" style="width:0%"></div>
+        </div>
+        <div style="font-size:12px;color:#5A5A5A;font-weight:600;margin-top:6px">現在 ¥120,000 / 目標 ¥5,000,000</div>
+      </div>
+
+      <div class="card" style="margin-bottom:12px;padding:0">
+        <div class="settings-list" style="border-radius:20px;margin:0">
+          <div class="settings-item">
+            <div class="settings-icon" style="background:#FFF0E6;color:#FF8C42"><i class="fas fa-bell"></i></div>
+            <div class="settings-label">通知設定</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+          </div>
+          <div class="settings-item">
+            <div class="settings-icon" style="background:#E0F4FB;color:#4A9FB5"><i class="fas fa-bullseye"></i></div>
+            <div class="settings-label">目標の変更</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+          </div>
+          <div class="settings-item">
+            <div class="settings-icon" style="background:#E8F8F0;color:#5CBF8A"><i class="fas fa-shield-alt"></i></div>
+            <div class="settings-label">プライバシー</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+          </div>
+          <div class="settings-item">
+            <div class="settings-icon" style="background:#F5F5F5;color:#9B9B9B"><i class="fas fa-question-circle"></i></div>
+            <div class="settings-label">ヘルプ・よくある質問</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+          </div>
+        </div>
+      </div>
+
+      <button class="consult-btn" onclick="goToScreen('products')">
+        <span style="font-size:24px">🐱</span>ニャイサに相談する
+      </button>
+
+      <div class="speech-bubble-wrap" style="margin:0">
+        <svg width="40" height="40" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="24" fill="#FF8C42"/>
+          <polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/>
+          <polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/>
+          <path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/>
+        </svg>
+        <div class="speech-bubble">
+          <p>7日間連続で頑張ってるにゃ！🔥<br>次のバッジまであと3レッスン！一緒に頑張ろう💪</p>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
+      <div class="nav-item active" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span><div class="nav-pill"></div></div>
+    </div>
+  </div>
+
+</div><!-- end phone-frame -->
+<div style="text-align:center;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;opacity:0.85">← ナビゲーションをクリックして操作できます</div>
+</div>
+
+<script>
+// NAVIGATION
+function goToScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const s=document.getElementById('screen-'+name);
+  s.classList.add('active');
+  s.scrollTop=0;
+  if(name==='home'){animateHomeProgress();updateGreeting();}
+  if(name==='simulation'){setTimeout(()=>{updateSim();},50);}
+  if(name==='diagnosis'){diagStep=0;diagAnswers=[];showingResult=false;renderDiagQuestion();}
+  if(name==='profile'){setTimeout(()=>{const el=document.getElementById('goal-progress');if(el)el.style.width='2.4%';},300);}
+}
+
+// ONBOARDING
+let obSlide=0;
+function obNext(){
+  if(obSlide<2){
+    obSlide++;
+    document.getElementById('ob-slides').style.transform=`translateX(-${obSlide*33.333}%)`;
+    updateObDots();
+    document.getElementById('ob-back-btn').style.display='block';
+    if(obSlide===2)document.getElementById('ob-next-btn').style.display='none';
+  }
+}
+function obBack(){
+  if(obSlide>0){
+    obSlide--;
+    document.getElementById('ob-slides').style.transform=`translateX(-${obSlide*33.333}%)`;
+    updateObDots();
+    document.getElementById('ob-back-btn').style.display=obSlide>0?'block':'none';
+    document.getElementById('ob-next-btn').style.display='block';
+  }
+}
+function updateObDots(){
+  [0,1,2].forEach(i=>document.getElementById('dot-'+i).classList.toggle('active',i===obSlide));
+}
+function selectExp(el){document.querySelectorAll('.exp-option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
+function startApp(){
+  const name=document.getElementById('user-name-input').value||'さくら';
+  document.getElementById('home-greeting').textContent=`おはよう、${name}さん 🌟`;
+  document.getElementById('prof-name').textContent=name+'さん';
+  goToScreen('home');
+}
+
+// HOME
+function updateGreeting(){
+  const h=new Date().getHours();
+  let g='こんにちは';
+  if(h<12)g='おはよう';
+  else if(h>=18)g='こんばんは';
+  const name=(document.getElementById('user-name-input')?.value)||'さくら';
+  document.getElementById('home-greeting').textContent=`${g}、${name}さん 🌟`;
+}
+function animateHomeProgress(){
+  setTimeout(()=>{const el=document.getElementById('home-progress');if(el)el.style.width='30%';},300);
+}
+
+// DIAGNOSIS
+const diagQs=[
+  {q:'投資の経験はありますか？',opts:[{e:'🐣',t:'初めて'},{e:'🌱',t:'少しある'},{e:'🌳',t:'経験あり'}]},
+  {q:'NISAで何をしたいですか？',opts:[{e:'👴',t:'老後の資金'},{e:'🏠',t:'住宅購入'},{e:'🎓',t:'教育費'},{e:'✈️',t:'旅行や趣味'}]},
+  {q:'どのくらいの期間投資しますか？',opts:[{e:'📅',t:'5年くらい'},{e:'🗓',t:'10年くらい'},{e:'📆',t:'20年以上'}]},
+  {q:'月にいくら積み立てたいですか？',opts:[{e:'💴',t:'1,000円〜'},{e:'💰',t:'10,000円〜'},{e:'💎',t:'30,000円〜'}]},
+  {q:'どのくらいリスクが取れますか？',opts:[{e:'🛡',t:'安全重視'},{e:'⚖️',t:'バランス型'},{e:'🚀',t:'積極的に'}]},
+];
+let diagStep=0,diagAnswers=[],showingResult=false;
+const catSVG=`<svg width="44" height="44" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="24" fill="#FF8C42"/><polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/><polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/><circle cx="22" cy="26" r="5" fill="#fff"/><circle cx="30" cy="26" r="5" fill="#fff"/><circle cx="22" cy="26" r="2.5" fill="#2D2D2D"/><circle cx="30" cy="26" r="2.5" fill="#2D2D2D"/><ellipse cx="26" cy="33" rx="3" ry="2" fill="#FF6B6B"/><path d="M22,36 Q26,40 30,36" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`;
+function renderDiagQuestion(){
+  if(showingResult)return;
+  const body=document.getElementById('diag-body');
+  if(diagStep>=diagQs.length){showDiagResult();return;}
+  const q=diagQs[diagStep];
+  const pct=(diagStep+1)/diagQs.length*100;
+  document.getElementById('diag-progress-fill').style.width=pct+'%';
+  body.innerHTML=`
+    <div class="speech-bubble-wrap" style="margin:0 0 14px">${catSVG}
+      <div class="speech-bubble"><div class="bubble-title">質問 ${diagStep+1} / ${diagQs.length}</div><p>${q.q}</p></div>
+    </div>
+    <div>${q.opts.map((o,i)=>`<div class="diag-option" onclick="selectDiagOpt(${i})"><span style="font-size:24px">${o.e}</span>${o.t}</div>`).join('')}</div>
+    ${diagStep>0?`<button class="btn-secondary" style="margin-top:14px;width:100%" onclick="diagBack()">← 戻る</button>`:''}
+  `;
+}
+function selectDiagOpt(i){
+  document.querySelectorAll('.diag-option').forEach((el,j)=>el.classList.toggle('selected',j===i));
+  diagAnswers[diagStep]=i;
+  setTimeout(()=>{diagStep++;if(diagStep>=diagQs.length)showDiagResult();else renderDiagQuestion();},400);
+}
+function diagBack(){if(diagStep>0){diagStep--;renderDiagQuestion();}}
+function showDiagResult(){
+  showingResult=true;
+  document.getElementById('diag-progress-fill').style.width='100%';
+  document.getElementById('diag-body').innerHTML=`
+    <div class="fade-in-up">
+      <div class="result-badge">
+        <div style="font-size:40px;margin-bottom:8px">🎉</div>
+        <div class="result-title">診断結果</div>
+        <div class="result-type">つみたてNISA がおすすめ！</div>
+        <div class="result-desc">長期・積立・分散投資に最適な制度です。毎月コツコツ積み立てて、将来の資産をつくりましょう！</div>
+      </div>
+      <div class="result-features">
+        <div class="result-feature"><div class="result-feature-icon">📅</div><div class="result-feature-label">非課税期間</div><div class="result-feature-val">無期限</div></div>
+        <div class="result-feature"><div class="result-feature-icon">💰</div><div class="result-feature-label">年間上限</div><div class="result-feature-val">120万円</div></div>
+        <div class="result-feature"><div class="result-feature-icon">🏦</div><div class="result-feature-label">最低金額</div><div class="result-feature-val">100円〜</div></div>
+        <div class="result-feature"><div class="result-feature-icon">📊</div><div class="result-feature-label">対象商品</div><div class="result-feature-val">投資信託</div></div>
+      </div>
+      <div class="speech-bubble-wrap" style="margin:0 0 14px">${catSVG.replace('viewBox="0 0 52 52"','viewBox="0 0 52 52" width="44" height="44"')}
+        <div class="speech-bubble"><p>つみたてNISAは毎月少額からコツコツ投資できる制度にゃ！まずはシミュレーションで将来の金額を試してみよう！</p></div>
+      </div>
+      <button class="btn-primary" onclick="goToScreen('simulation')">シミュレーションしてみる 📊</button>
+      <button class="btn-secondary" style="margin-top:10px;width:100%" onclick="resetDiag()">もう一度診断する</button>
+    </div>`;
+}
+function resetDiag(){diagStep=0;diagAnswers=[];showingResult=false;renderDiagQuestion();}
+
+// SIMULATION
+function calcSim(){
+  const monthly=parseInt(document.getElementById('monthly-slider').value);
+  const years=parseInt(document.getElementById('years-slider').value);
+  const rate=parseFloat(document.getElementById('rate-slider').value)/100;
+  const months=years*12;
+  const mr=rate/12;
+  let total=0;
+  for(let i=0;i<months;i++)total=(total+monthly)*(1+mr);
+  const principal=monthly*months;
+  return{total:Math.round(total),principal,gain:Math.round(total-principal),years,monthly,rate};
+}
+function fmtY(n){
+  if(n>=100000000)return`¥${(n/100000000).toFixed(1)}億`;
+  if(n>=10000)return`¥${Math.round(n/10000)}万`;
+  return`¥${n.toLocaleString()}`;
+}
+function updateSim(){
+  const{total,principal,gain,years,monthly,rate}=calcSim();
+  const mv=document.getElementById('monthly-slider').value;
+  const yv=document.getElementById('years-slider').value;
+  const rv=document.getElementById('rate-slider').value;
+  document.getElementById('monthly-val').textContent='¥'+parseInt(mv).toLocaleString();
+  document.getElementById('years-val').textContent=yv+'年';
+  document.getElementById('rate-val').textContent=rv+'%';
+  document.getElementById('sim-result').textContent=fmtY(total);
+  document.getElementById('sim-sub').textContent=`元本 ${fmtY(principal)} ＋ 運用益 ${fmtY(gain)}`;
+  document.getElementById('fun-compare').textContent=`🏠 これは東京の家賃約${Math.round(total/30000)}ヶ月分と同じ！`;
+  ['monthly-slider','years-slider','rate-slider'].forEach(id=>{
+    const el=document.getElementById(id);
+    const p=(el.value-el.min)/(el.max-el.min)*100;
+    el.style.background=`linear-gradient(90deg,#FF8C42 ${p}%,#F0F0F0 ${p}%)`;
+  });
+  renderSimChart(monthly,years,rate);
+}
+function renderSimChart(monthly,years,rate){
+  const c=document.getElementById('sim-bar-chart');
+  if(!c)return;
+  const maxY=Math.min(years,30);
+  const pts=[5,10,15,20,25,30].filter(y=>y<=maxY);
+  if(pts.length===0||pts[pts.length-1]!==maxY)pts.push(maxY);
+  const mr=rate/12;
+  const data=pts.map(y=>{
+    const months=y*12;let t=0;
+    for(let i=0;i<months;i++)t=(t+monthly)*(1+mr);
+    const p=monthly*months;
+    return{y,p:Math.round(p),g:Math.round(t-p)};
+  });
+  const maxV=Math.max(...data.map(d=>d.p+d.g));
+  const H=100;
+  c.innerHTML=data.map(d=>{
+    const th=((d.p+d.g)/maxV*H);
+    const ph=(d.p/(d.p+d.g))*th;
+    const gh=th-ph;
+    return`<div class="bar-group"><div class="bar-wrap"><div class="bar-gain" style="height:${gh}px"></div><div class="bar-invest" style="height:${ph}px;border-radius:${gh>0?'0':'6px 6px'} 0 0"></div></div><div class="bar-label">${d.y}年</div></div>`;
+  }).join('');
+}
+
+// LEARNING
+function toggleLesson(){
+  const d=document.getElementById('lesson-detail');
+  d.style.display=d.style.display==='none'?'block':'none';
+}
+
+// PRODUCTS
+function filterProd(el,type){
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(c=>{
+    if(type==='all')c.style.display='block';
+    else if(type==='growth')c.style.display=c.dataset.type==='growth'?'block':'none';
+    else if(type==='balance')c.style.display=c.dataset.type==='balance'?'block':'none';
+    else c.style.display=c.dataset.type==='safe'?'block':'none';
+  });
+}
+
+// INIT
+window.addEventListener('load',()=>{
+  updateGreeting();
+  animateHomeProgress();
+});
+</script>
 </body>
 </html>
