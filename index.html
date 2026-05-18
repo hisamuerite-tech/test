@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>猫でも分かるやさしいNISA</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>@import url('data:text/css,');</style>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(135deg,#FFB380 0%,#FF8C42 50%,#7EC8E3 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear-gradient(135deg,#FFB380 0%,#FF8C42 50%,#7EC8E3 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .phone-frame{width:375px;height:780px;background:#FAFAFA;border-radius:44px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.3),0 0 0 12px #1a1a1a,0 0 0 14px #333,inset 0 0 0 2px #555;flex-shrink:0}
 .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1a1a1a;border-radius:0 0 20px 20px;z-index:100}
 .screen{position:absolute;top:0;left:0;right:0;bottom:0;background:#FAFAFA;overflow-y:auto;overflow-x:hidden;display:none;padding-bottom:70px;padding-top:28px}
@@ -18,8 +17,8 @@ body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(135deg
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:8px 12px;border-radius:16px;transition:all 0.2s;position:relative}
 .nav-item.active{color:#FF8C42}
 .nav-item:not(.active){color:#9B9B9B}
-.nav-item i{font-size:20px;transition:all 0.2s}
-.nav-item.active i{font-size:22px}
+.nav-item .ni{font-size:20px;transition:all 0.2s;line-height:1}
+.nav-item.active .ni{font-size:22px}
 .nav-item span{font-size:9px;font-weight:700}
 .nav-pill{position:absolute;bottom:-2px;width:24px;height:3px;background:#FF8C42;border-radius:3px;left:50%;transform:translateX(-50%)}
 .btn-primary{background:linear-gradient(135deg,#FF8C42,#FF6B1A);color:#fff;border:none;border-radius:50px;padding:14px 32px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(255,140,66,0.4);transition:all 0.2s;width:100%}
@@ -352,7 +351,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
           <div style="font-size:15px;font-weight:800;margin-bottom:4px">今日のレッスン</div>
           <div style="font-size:12px;opacity:0.9">分散投資とは？ · 3分 · +50XP</div>
         </div>
-        <i class="fas fa-chevron-right" style="opacity:0.7"></i>
+        <span style="opacity:0.7;font-size:18px">›</span>
       </div>
 
       <div class="card" style="margin-bottom:14px;display:flex;align-items:center;gap:14px">
@@ -370,11 +369,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
     </div>
     <div class="bottom-nav">
-      <div class="nav-item active" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span><div class="nav-pill"></div></div>
-      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
-      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
-      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
-      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+      <div class="nav-item active" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span></div>
     </div>
   </div>
 
@@ -387,11 +386,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     <div class="diag-progress"><div class="diag-progress-fill" id="diag-progress-fill" style="width:20%"></div></div>
     <div class="diag-body" id="diag-body"></div>
     <div class="bottom-nav">
-      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
-      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
-      <div class="nav-item active" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span><div class="nav-pill"></div></div>
-      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
-      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+      <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
+      <div class="nav-item active" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span></div>
     </div>
   </div>
 
@@ -441,11 +440,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
     </div>
     <div class="bottom-nav">
-      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
-      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
-      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
-      <div class="nav-item active" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span><div class="nav-pill"></div></div>
-      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+      <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span></div>
+      <div class="nav-item active" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span></div>
     </div>
   </div>
 
@@ -544,11 +543,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
     </div>
     <div class="bottom-nav">
-      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
-      <div class="nav-item active" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span><div class="nav-pill"></div></div>
-      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
-      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
-      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+      <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
+      <div class="nav-item active" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span></div>
     </div>
   </div>
 
@@ -655,11 +654,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
     </div>
     <div class="bottom-nav">
-      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
-      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
-      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
-      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
-      <div class="nav-item" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span></div>
+      <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span></div>
+      <div class="nav-item" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span></div>
     </div>
   </div>
 
@@ -699,20 +698,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       <div class="card" style="margin-bottom:12px;padding:0">
         <div class="settings-list" style="border-radius:20px;margin:0">
           <div class="settings-item">
-            <div class="settings-icon" style="background:#FFF0E6;color:#FF8C42"><i class="fas fa-bell"></i></div>
-            <div class="settings-label">通知設定</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+            <div class="settings-icon" style="background:#FFF0E6;color:#FF8C42">🔔</div>
+            <div class="settings-label">通知設定</div><span style="color:#C0C0C0;font-size:14px">›</span>
           </div>
           <div class="settings-item">
-            <div class="settings-icon" style="background:#E0F4FB;color:#4A9FB5"><i class="fas fa-bullseye"></i></div>
-            <div class="settings-label">目標の変更</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+            <div class="settings-icon" style="background:#E0F4FB;color:#4A9FB5">🎯</div>
+            <div class="settings-label">目標の変更</div><span style="color:#C0C0C0;font-size:14px">›</span>
           </div>
           <div class="settings-item">
-            <div class="settings-icon" style="background:#E8F8F0;color:#5CBF8A"><i class="fas fa-shield-alt"></i></div>
-            <div class="settings-label">プライバシー</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+            <div class="settings-icon" style="background:#E8F8F0;color:#5CBF8A">🔒</div>
+            <div class="settings-label">プライバシー</div><span style="color:#C0C0C0;font-size:14px">›</span>
           </div>
           <div class="settings-item">
-            <div class="settings-icon" style="background:#F5F5F5;color:#9B9B9B"><i class="fas fa-question-circle"></i></div>
-            <div class="settings-label">ヘルプ・よくある質問</div><i class="fas fa-chevron-right" style="color:#C0C0C0;font-size:12px"></i>
+            <div class="settings-icon" style="background:#F5F5F5;color:#9B9B9B">❓</div>
+            <div class="settings-label">ヘルプ・よくある質問</div><span style="color:#C0C0C0;font-size:14px">›</span>
           </div>
         </div>
       </div>
@@ -736,11 +735,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
     </div>
     <div class="bottom-nav">
-      <div class="nav-item" onclick="goToScreen('home')"><i class="fas fa-home"></i><span>ホーム</span></div>
-      <div class="nav-item" onclick="goToScreen('learning')"><i class="fas fa-book-open"></i><span>学習</span></div>
-      <div class="nav-item" onclick="goToScreen('diagnosis')"><i class="fas fa-search"></i><span>診断</span></div>
-      <div class="nav-item" onclick="goToScreen('simulation')"><i class="fas fa-chart-bar"></i><span>シミュ</span></div>
-      <div class="nav-item active" onclick="goToScreen('profile')"><i class="fas fa-user"></i><span>プロフィール</span><div class="nav-pill"></div></div>
+      <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
+      <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
+      <div class="nav-item" onclick="goToScreen('diagnosis')"><span class="ni">🔍</span><span>診断</span></div>
+      <div class="nav-item" onclick="goToScreen('simulation')"><span class="ni">📊</span><span>シミュ</span></div>
+      <div class="nav-item active" onclick="goToScreen('profile')"><span class="ni">👤</span><span>プロフィール</span><div class="nav-pill"></div></div>
     </div>
   </div>
 
