@@ -284,7 +284,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 
 .event-label{font-size:11px;font-weight:800;color:#FF6B9D;text-transform:uppercase;letter-spacing:1px;text-align:center;margin:10px 0 6px}
 .event-choices{padding:0 16px;display:flex;flex-direction:column;gap:8px}
-.event-choice{background:#fff;border:2px solid #FFD6E8;border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;box-shadow:0 3px 12px rgba(255,107,157,0.1)}
+.event-choice{background:#fff;border:2px solid #FFD6E8;border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;box-shadow:0 3px 12px rgba(255,107,157,0.1);width:100%;text-align:left;font-family:inherit}
 .event-choice:hover,.event-choice:active{border-color:#FF6B9D;background:#FFF0F6;transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,107,157,0.2)}
 .event-choice-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
 .event-choice-main{flex:1}
@@ -438,30 +438,30 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       <!-- イベント選択 -->
       <div class="event-label">💕 今日は何をする？</div>
       <div class="event-choices">
-        <div class="event-choice" onclick="goToScreen('learning');addAffection()">
+        <button class="event-choice" onclick="goToScreen('learning');addAffection()">
           <div class="event-choice-icon" style="background:#FFF0E6">📚</div>
           <div class="event-choice-main">
             <div class="event-choice-title">一緒に勉強する</div>
             <div class="event-choice-sub">分散投資のレッスン · 3分</div>
           </div>
           <span class="event-choice-xp">+50XP</span>
-        </div>
-        <div class="event-choice" onclick="goToScreen('simulation');addAffection()">
+        </button>
+        <button class="event-choice" onclick="goToScreen('simulation');addAffection()">
           <div class="event-choice-icon" style="background:#E0F4FB">📊</div>
           <div class="event-choice-main">
             <div class="event-choice-title">将来の夢を計算する</div>
             <div class="event-choice-sub">積立シミュレーション</div>
           </div>
           <span class="event-choice-heart">💕</span>
-        </div>
-        <div class="event-choice" onclick="goToScreen('diagnosis');addAffection()">
+        </button>
+        <button class="event-choice" onclick="goToScreen('diagnosis');addAffection()">
           <div class="event-choice-icon" style="background:#F0F8FF">🔍</div>
           <div class="event-choice-main">
             <div class="event-choice-title">ニャイサに相談する</div>
             <div class="event-choice-sub">あなたに合ったNISAを診断</div>
           </div>
           <span class="event-choice-heart">🐱</span>
-        </div>
+        </button>
       </div>
 
       <!-- ワンポイント -->
@@ -1029,7 +1029,10 @@ function updateGreeting(){
   if(h<12)g='おはよう';
   else if(h>=18)g='こんばんは';
   const name=(document.getElementById('user-name-input')?.value)||'さくら';
-  document.getElementById('home-greeting').textContent=`${g}、${name}さん 🌟`;
+  const el=document.getElementById('home-greeting');
+  if(el)el.textContent=`${g}、${name}さん 🌟`;
+  const vnEl=document.getElementById('home-vn-text');
+  if(vnEl&&vnLines[vnIdx])vnEl.innerHTML=vnLines[vnIdx].replace('{name}',name);
 }
 
 // ===== DATING SIM SYSTEM =====
