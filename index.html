@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>猫でも分かるやさしいNISA</title>
-<style>@import url('data:text/css,');</style>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear-gradient(135deg,#FFB380 0%,#FF8C42 50%,#7EC8E3 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(135deg,#FFB380 0%,#FF8C42 50%,#7EC8E3 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .phone-frame{width:375px;height:780px;background:#FAFAFA;border-radius:44px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.3),0 0 0 12px #1a1a1a,0 0 0 14px #333,inset 0 0 0 2px #555;flex-shrink:0}
 .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1a1a1a;border-radius:0 0 20px 20px;z-index:100}
 .screen{position:absolute;top:0;left:0;right:0;bottom:0;background:#FAFAFA;overflow-y:auto;overflow-x:hidden;display:none;padding-bottom:70px;padding-top:28px}
@@ -17,8 +18,8 @@ body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:8px 12px;border-radius:16px;transition:all 0.2s;position:relative}
 .nav-item.active{color:#FF8C42}
 .nav-item:not(.active){color:#9B9B9B}
-.nav-item .ni{font-size:20px;transition:all 0.2s;line-height:1}
-.nav-item.active .ni{font-size:22px}
+.nav-item i{font-size:20px;transition:all 0.2s}
+.nav-item.active i{font-size:22px}
 .nav-item span{font-size:9px;font-weight:700}
 .nav-pill{position:absolute;bottom:-2px;width:24px;height:3px;background:#FF8C42;border-radius:3px;left:50%;transform:translateX(-50%)}
 .btn-primary{background:linear-gradient(135deg,#FF8C42,#FF6B1A);color:#fff;border:none;border-radius:50px;padding:14px 32px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(255,140,66,0.4);transition:all 0.2s;width:100%}
@@ -179,10 +180,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes drawLine{from{stroke-dashoffset:500}to{stroke-dashoffset:0}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .fade-in-up{animation:fadeInUp 0.4s ease both}
 .pulse{animation:pulse 3s infinite}
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#2D2D2D;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;white-space:nowrap;z-index:9999;animation:toastIn 0.3s ease;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 
 @media(max-width:420px){
   body{padding:0;align-items:flex-start}
@@ -353,7 +352,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
           <div style="font-size:15px;font-weight:800;margin-bottom:4px">今日のレッスン</div>
           <div style="font-size:12px;opacity:0.9">分散投資とは？ · 3分 · +50XP</div>
         </div>
-        <span style="opacity:0.7;font-size:18px">›</span>
+        <span style="color:#C0C0C0;font-size:16px">›</span>
       </div>
 
       <div class="card" style="margin-bottom:14px;display:flex;align-items:center;gap:14px">
@@ -524,7 +523,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
           <p style="font-size:13px;font-weight:700;color:#2D2D2D;margin-bottom:6px">🌍 インデックスファンドで簡単に分散！</p>
           <p>「全世界株式」の投資信託を1つ買うだけで、<span class="highlight">世界中の数千社</span>に自動で分散できます。</p>
         </div>
-        <button class="btn-primary" onclick="showToast('🎉 レッスン完了！+50XP 獲得！すごいにゃ🐱')">✅ 理解できた！+50XP</button>
+        <button class="btn-primary" onclick="alert('🎉 レッスン完了！+50XP 獲得！\nすごいにゃ！継続は力なり！')">✅ 理解できた！+50XP</button>
       </div>
 
       <div class="lesson-card locked">
@@ -701,19 +700,24 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
         <div class="settings-list" style="border-radius:20px;margin:0">
           <div class="settings-item">
             <div class="settings-icon" style="background:#FFF0E6;color:#FF8C42">🔔</div>
-            <div class="settings-label">通知設定</div><span style="color:#C0C0C0;font-size:14px">›</span>
+            <div class="settings-label">通知設定</div><span style="color:#C0C0C0;font-size:16px">›</span>
           </div>
           <div class="settings-item">
             <div class="settings-icon" style="background:#E0F4FB;color:#4A9FB5">🎯</div>
-            <div class="settings-label">目標の変更</div><span style="color:#C0C0C0;font-size:14px">›</span>
+            <div class="settings-label">目標の変更</div><span style="color:#C0C0C0;font-size:16px">›</span>
           </div>
           <div class="settings-item">
-            <div class="settings-icon" style="background:#E8F8F0;color:#5CBF8A">🔒</div>
-            <div class="settings-label">プライバシー</div><span style="color:#C0C0C0;font-size:14px">›</span>
+            <div class="settings-icon" style="background:#E8F8F0;color:#5CBF8A">🛡</div>
+            <div class="settings-label">プライバシー</div><span style="color:#C0C0C0;font-size:16px">›</span>
           </div>
           <div class="settings-item">
             <div class="settings-icon" style="background:#F5F5F5;color:#9B9B9B">❓</div>
-            <div class="settings-label">ヘルプ・よくある質問</div><span style="color:#C0C0C0;font-size:14px">›</span>
+            <div class="settings-label">ヘルプ・よくある質問</div><span style="color:#C0C0C0;font-size:16px">›</span>
+          </div>
+          <div class="settings-item" onclick="showLogoutModal()">
+            <div class="settings-icon" style="background:#FFE8E8">🚪</div>
+            <div class="settings-label" style="color:#E05A5A;font-weight:800">ログアウト</div>
+            <span style="color:#E05A5A;font-size:16px">›</span>
           </div>
         </div>
       </div>
@@ -745,18 +749,51 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     </div>
   </div>
 
+  <!-- LOGOUT MODAL -->
+  <div id="logout-modal" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:flex-end;justify-content:center">
+    <div style="background:#fff;border-radius:28px 28px 0 0;padding:28px 24px 36px;width:100%;text-align:center">
+      <div style="font-size:44px;margin-bottom:12px">🐱</div>
+      <div style="font-size:18px;font-weight:900;color:#2D2D2D;margin-bottom:8px">ログアウトしますか？</div>
+      <div style="font-size:13px;color:#9B9B9B;font-weight:600;margin-bottom:24px">またいつでも戻ってきてにゃ！<br>学習の記録はそのまま残ります</div>
+      <button onclick="doLogout()" style="width:100%;background:linear-gradient(135deg,#E05A5A,#FF6B6B);color:#fff;border:none;border-radius:50px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;margin-bottom:12px;box-shadow:0 4px 16px rgba(224,90,90,0.35)">ログアウト</button>
+      <button onclick="hideLogoutModal()" style="width:100%;background:#F5F5F5;color:#5A5A5A;border:none;border-radius:50px;padding:14px;font-size:16px;font-weight:800;cursor:pointer">キャンセル</button>
+    </div>
+  </div>
 </div><!-- end phone-frame -->
 <div style="text-align:center;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;opacity:0.85">← ナビゲーションをクリックして操作できます</div>
 </div>
 
 <script>
-// TOAST NOTIFICATION (alert()の代替)
+// TOAST
 function showToast(msg){
   document.querySelectorAll('.toast').forEach(t=>t.remove());
   const t=document.createElement('div');
   t.className='toast';t.textContent=msg;
   document.body.appendChild(t);
   setTimeout(()=>t.remove(),3000);
+}
+
+// LOGOUT
+function showLogoutModal(){
+  const m=document.getElementById('logout-modal');
+  m.style.display='flex';
+}
+function hideLogoutModal(){
+  document.getElementById('logout-modal').style.display='none';
+}
+function doLogout(){
+  hideLogoutModal();
+  // データリセット
+  document.getElementById('user-name-input').value='';
+  document.getElementById('home-greeting').textContent='おはよう、さくらさん 🌟';
+  document.getElementById('prof-name').textContent='さくらさん';
+  obSlide=0;
+  document.getElementById('ob-slides').style.transform='translateX(0)';
+  document.getElementById('ob-back-btn').style.display='none';
+  document.getElementById('ob-next-btn').style.display='block';
+  [0,1,2].forEach(i=>document.getElementById('dot-'+i).classList.toggle('active',i===0));
+  goToScreen('onboarding');
+  showToast('ログアウトしました 👋');
 }
 
 // NAVIGATION
