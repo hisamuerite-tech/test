@@ -250,6 +250,64 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .quiz-result.ok{background:#E8F8F0;color:#5CBF8A}
 .quiz-result.ng{background:#FFE8E8;color:#E05A5A}
 
+
+/* ========== DATING SIM STYLE ========== */
+@keyframes floatHeart{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-80px) scale(0.5);opacity:0}}
+@keyframes sparkle{0%,100%{transform:scale(1) rotate(0deg);opacity:1}50%{transform:scale(1.3) rotate(15deg);opacity:0.7}}
+@keyframes slideUpVN{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.sim-bg{background:linear-gradient(180deg,#FFE4F0 0%,#FFF0F8 40%,#FFF8EC 100%);min-height:100%}
+.sim-header{padding:44px 20px 12px;display:flex;justify-content:space-between;align-items:center}
+.sim-title{font-size:13px;font-weight:800;color:#FF6B9D;letter-spacing:0.5px}
+.affection-bar{display:flex;align-items:center;gap:4px}
+.heart-full{color:#FF6B9D;font-size:16px;animation:heartbeat 1.5s infinite}
+.heart-empty{color:#F0C0D0;font-size:16px}
+.streak-sim{background:rgba(255,107,157,0.15);border-radius:50px;padding:3px 10px;font-size:12px;font-weight:800;color:#FF6B9D}
+
+.sprite-area{display:flex;justify-content:center;align-items:flex-end;height:220px;position:relative;overflow:visible}
+.sprite-bg{position:absolute;bottom:0;width:200px;height:200px;background:radial-gradient(ellipse at center bottom,rgba(255,107,157,0.15) 0%,transparent 70%)}
+.sprite-name-badge{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FF6B9D,#FF8C42);color:#fff;border-radius:50px;padding:4px 16px;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 3px 12px rgba(255,107,157,0.35)}
+
+.float-heart{position:absolute;font-size:18px;pointer-events:none;animation:floatHeart 1.5s ease-out forwards}
+.sparkle-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+
+.vn-box{background:rgba(30,20,40,0.88);border-radius:20px;margin:8px 16px;padding:16px 18px;position:relative;animation:slideUpVN 0.3s ease}
+.vn-box::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid rgba(30,20,40,0.88)}
+.vn-name-plate{display:inline-block;background:linear-gradient(135deg,#FF6B9D,#FF8C42);color:#fff;border-radius:8px 8px 0 0;padding:3px 14px;font-size:12px;font-weight:800;margin-bottom:8px}
+.vn-text{color:#fff;font-size:14px;line-height:1.8;font-weight:600;min-height:42px}
+.vn-tap{display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-top:8px;opacity:0.7;cursor:pointer}
+.vn-tap span{color:#FFB7C5;font-size:11px;font-weight:700}
+.vn-tap-arrow{color:#FFB7C5;font-size:14px;animation:sparkle 1s infinite}
+
+.event-label{font-size:11px;font-weight:800;color:#FF6B9D;text-transform:uppercase;letter-spacing:1px;text-align:center;margin:10px 0 6px}
+.event-choices{padding:0 16px;display:flex;flex-direction:column;gap:8px}
+.event-choice{background:#fff;border:2px solid #FFD6E8;border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;box-shadow:0 3px 12px rgba(255,107,157,0.1)}
+.event-choice:hover,.event-choice:active{border-color:#FF6B9D;background:#FFF0F6;transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,107,157,0.2)}
+.event-choice-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.event-choice-main{flex:1}
+.event-choice-title{font-size:15px;font-weight:800;color:#2D2D2D;margin-bottom:2px}
+.event-choice-sub{font-size:12px;color:#9B9B9B;font-weight:600}
+.event-choice-heart{color:#FF6B9D;font-size:18px}
+.event-choice-xp{background:linear-gradient(135deg,#FF6B9D,#FF8C42);color:#fff;border-radius:50px;padding:2px 10px;font-size:11px;font-weight:800}
+
+.affection-popup{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#FF6B9D,#FF8C42);color:#fff;border-radius:20px;padding:16px 28px;text-align:center;z-index:500;display:none;box-shadow:0 8px 30px rgba(255,107,157,0.5);animation:slideUpVN 0.3s ease}
+.affection-popup-icon{font-size:32px;margin-bottom:4px}
+.affection-popup-text{font-size:16px;font-weight:800}
+.affection-popup-sub{font-size:12px;opacity:0.9;margin-top:2px}
+
+/* VN-style lesson dialogue */
+.vn-lesson-scene{background:linear-gradient(180deg,#FFF0F8 0%,#FFF8EC 100%);border-radius:20px;overflow:hidden;margin-bottom:10px}
+.vn-scene-bg{padding:20px;display:flex;justify-content:center}
+.vn-dialog{background:rgba(30,20,40,0.85);padding:14px 16px;position:relative}
+.choice-wrap{display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:#fff}
+.sim-choice-btn{background:#fff;border:2px solid #FFD6E8;border-radius:14px;padding:12px 16px;font-size:14px;font-weight:700;color:#2D2D2D;cursor:pointer;transition:all 0.2s;text-align:left}
+.sim-choice-btn:hover{border-color:#FF6B9D;background:#FFF0F6;color:#FF6B9D}
+.sim-choice-btn.correct{border-color:#5CBF8A;background:#E8F8F0;color:#5CBF8A}
+.sim-choice-btn.wrong{border-color:#E05A5A;background:#FFE8E8;color:#E05A5A}
+
 @media(max-width:420px){
   body{padding:0;align-items:flex-start}
   .phone-frame{width:100vw;height:100vh;border-radius:0;box-shadow:none}
@@ -326,73 +384,93 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 
   <!-- HOME -->
   <div class="screen" id="screen-home">
-    <div class="home-header">
-      <div class="home-greeting" id="home-greeting">おはよう、さくらさん 🌟</div>
-      <div style="font-size:13px;opacity:0.9;font-weight:600">今日も一緒に学んでいこう！</div>
-      <div class="streak-badge">🔥 7日連続学習中！</div>
-    </div>
-    <div class="home-body">
-      <div class="speech-bubble-wrap">
-        <svg width="50" height="50" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="24" fill="#FF8C42"/><polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/><polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/><path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="19" cy="31" r="5" fill="#FFB380" opacity="0.5"/><circle cx="33" cy="31" r="5" fill="#FFB380" opacity="0.5"/><ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/><path d="M22,35 Q26,39 30,35" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="2" y1="28" x2="19" y2="31" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="2" y1="33" x2="19" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="31" x2="50" y2="28" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="33" x2="50" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/></svg>
-        <div class="speech-bubble">
-          <div class="bubble-title">💬 今日のひとこと</div>
-          <p>投資は長く続けることが大事！<br>今日も少しずつ学んでいこうにゃ✨</p>
+    <div class="sim-bg" style="min-height:100%">
+      <!-- Header -->
+      <div class="sim-header">
+        <div>
+          <div class="sim-title">❤️ ニャイサルート 攻略中</div>
+          <div class="streak-sim" style="margin-top:4px">🔥 7日連続ログイン中</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#FF6B9D;margin-bottom:3px;text-align:right">好感度</div>
+          <div class="affection-bar">
+            <span class="heart-full">❤️</span>
+            <span class="heart-full">❤️</span>
+            <span class="heart-full">❤️</span>
+            <span class="heart-full">❤️</span>
+            <span class="heart-empty">🤍</span>
+          </div>
         </div>
       </div>
 
-      <div class="savings-card fade-in-up">
-        <div style="font-size:11px;color:#9B9B9B;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">今月の積立状況</div>
-        <div class="savings-amount">¥10,000</div>
-        <div style="font-size:12px;color:#9B9B9B;font-weight:600;margin-bottom:10px">目標 ¥33,333（年間上限の1/12）</div>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar-fill" id="home-progress" style="width:0%"></div>
-        </div>
-        <div style="font-size:12px;color:#5CBF8A;font-weight:700;margin-top:6px">✅ 30% 達成！</div>
+      <!-- スプライトエリア -->
+      <div class="sprite-area">
+        <div class="sprite-bg"></div>
+        <div class="sprite-name-badge">ニャイサ 🐱</div>
+        <div id="home-sprite" style="position:relative;z-index:2"><svg width="170" height="170" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="188" rx="60" ry="16" fill="rgba(255,107,157,0.15)"/><circle cx="100" cy="105" r="60" fill="#FF8C42"/><polygon points="62,60 50,30 80,55" fill="#FF8C42"/><polygon points="64,58 54,34 78,54" fill="#FFB380"/><polygon points="138,60 150,30 120,55" fill="#FF8C42"/><polygon points="136,58 146,34 122,54" fill="#FFB380"/><path d="M78,72 Q100,64 122,72" stroke="#E07A35" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M72,82 Q100,74 128,82" stroke="#E07A35" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M84,106 Q90,98 96,106" stroke="#2D2D2D" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M104,106 Q110,98 116,106" stroke="#2D2D2D" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="80" cy="115" r="10" fill="#FFB380" opacity="0.55"/><circle cx="120" cy="115" r="10" fill="#FFB380" opacity="0.55"/><ellipse cx="100" cy="117" rx="5" ry="3.5" fill="#FF6B6B"/><path d="M94,122 Q100,129 106,122" stroke="#E05A5A" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="48" y1="112" x2="82" y2="118" stroke="#8B5E3C" stroke-width="1.8" opacity="0.55"/><line x1="46" y1="120" x2="82" y2="121" stroke="#8B5E3C" stroke-width="1.8" opacity="0.55"/><line x1="118" y1="118" x2="152" y2="112" stroke="#8B5E3C" stroke-width="1.8" opacity="0.55"/><line x1="118" y1="121" x2="154" y2="120" stroke="#8B5E3C" stroke-width="1.8" opacity="0.55"/><path d="M76,148 Q100,162 124,148" stroke="#FF8C42" stroke-width="3" fill="none"/><circle cx="100" cy="155" r="8" fill="#fff" opacity="0.9"/><text x="100" y="159" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="900" fill="#FF8C42">NISA</text></svg></div>
+        <div class="sparkle-wrap" id="sparkle-wrap"></div>
       </div>
 
-      <div class="card" style="margin-bottom:14px">
-        <div class="section-title" style="font-size:15px;margin-bottom:8px">📈 資産推移グラフ（6ヶ月）</div>
-        <svg width="100%" height="80" viewBox="0 0 343 80" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF8C42" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#FF8C42" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M0,62 C40,58 60,52 80,48 C110,42 130,36 160,30 C190,24 220,18 260,14 C290,11 320,9 343,7" stroke="#FF8C42" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="500" stroke-dashoffset="500" style="animation:drawLine 1.5s ease 0.5s forwards"/>
-          <path d="M0,62 C40,58 60,52 80,48 C110,42 130,36 160,30 C190,24 220,18 260,14 C290,11 320,9 343,7 L343,78 L0,78Z" fill="url(#chartGrad)"/>
-          <text x="4" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">1月</text>
-          <text x="58" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">2月</text>
-          <text x="115" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">3月</text>
-          <text x="172" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">4月</text>
-          <text x="229" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">5月</text>
-          <text x="295" y="78" font-size="9" fill="#9B9B9B" font-family="Nunito,sans-serif">6月</text>
-        </svg>
+      <!-- VN テキストボックス -->
+      <div class="vn-box" id="home-vn-box" onclick="nextVNText()">
+        <div class="vn-name-plate">ニャイサ</div>
+        <div class="vn-text" id="home-vn-text">おはよう、さくらさん…💕<br>今日も一緒にNISA勉強しようにゃ♪</div>
+        <div class="vn-tap"><span>タップして続ける</span><span class="vn-tap-arrow">▼</span></div>
       </div>
 
-      <div style="background:linear-gradient(135deg,#7EC8E3,#4A9FB5);border-radius:20px;padding:16px;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:14px;cursor:pointer" onclick="goToScreen('learning')">
-        <div style="width:48px;height:48px;background:rgba(255,255,255,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">📚</div>
+      <!-- 今日の積立ミニカード -->
+      <div style="margin:8px 16px 0;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 3px 12px rgba(255,107,157,0.1);display:flex;align-items:center;gap:12px">
+        <div style="font-size:22px">💰</div>
         <div style="flex:1">
-          <div style="font-size:15px;font-weight:800;margin-bottom:4px">今日のレッスン</div>
-          <div style="font-size:12px;opacity:0.9">分散投資とは？ · 3分 · +50XP</div>
+          <div style="font-size:10px;color:#9B9B9B;font-weight:800">今月の積立</div>
+          <div style="font-size:18px;font-weight:900;color:#FF8C42">¥10,000</div>
         </div>
-        <span style="color:#C0C0C0;font-size:16px">›</span>
+        <div style="text-align:right">
+          <div style="font-size:10px;color:#9B9B9B;font-weight:600">目標まで</div>
+          <div style="font-size:13px;font-weight:800;color:#5CBF8A">70%</div>
+        </div>
+        <div style="width:6px;height:40px;background:#F0F0F0;border-radius:3px;overflow:hidden">
+          <div style="width:100%;height:30%;background:linear-gradient(180deg,#FF8C42,#FFB380);border-radius:3px;margin-top:auto;position:absolute;bottom:0"></div>
+          <div id="home-bar-v" style="width:100%;height:30%;background:linear-gradient(180deg,#FF8C42,#FFB380);border-radius:3px;position:relative;top:70%;transition:top 1s ease"></div>
+        </div>
       </div>
 
-      <div class="card" style="margin-bottom:14px;display:flex;align-items:center;gap:14px">
-        <div style="width:48px;height:48px;background:linear-gradient(135deg,#FFD166,#FF8C42);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">🎯</div>
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:800;color:#2D2D2D">デイリーチャレンジ</div>
-          <div style="font-size:12px;color:#9B9B9B;font-weight:600">今日のクイズに挑戦して+30XP！</div>
+      <!-- イベント選択 -->
+      <div class="event-label">💕 今日は何をする？</div>
+      <div class="event-choices">
+        <div class="event-choice" onclick="goToScreen('learning');addAffection()">
+          <div class="event-choice-icon" style="background:#FFF0E6">📚</div>
+          <div class="event-choice-main">
+            <div class="event-choice-title">一緒に勉強する</div>
+            <div class="event-choice-sub">分散投資のレッスン · 3分</div>
+          </div>
+          <span class="event-choice-xp">+50XP</span>
         </div>
-        <span class="tag tag-orange">未達成</span>
+        <div class="event-choice" onclick="goToScreen('simulation');addAffection()">
+          <div class="event-choice-icon" style="background:#E0F4FB">📊</div>
+          <div class="event-choice-main">
+            <div class="event-choice-title">将来の夢を計算する</div>
+            <div class="event-choice-sub">積立シミュレーション</div>
+          </div>
+          <span class="event-choice-heart">💕</span>
+        </div>
+        <div class="event-choice" onclick="goToScreen('diagnosis');addAffection()">
+          <div class="event-choice-icon" style="background:#F0F8FF">🔍</div>
+          <div class="event-choice-main">
+            <div class="event-choice-title">ニャイサに相談する</div>
+            <div class="event-choice-sub">あなたに合ったNISAを診断</div>
+          </div>
+          <span class="event-choice-heart">🐱</span>
+        </div>
       </div>
 
-      <div class="tip-card">
-        <div class="tip-title">🐱 ニャイサのワンポイント</div>
-        <div style="font-size:13px;color:#2D2D2D;line-height:1.6;font-weight:600">つみたてNISAの<span style="background:#FFD166;padding:0 4px;border-radius:4px;font-weight:800">年間上限は40万円</span>。月々33,333円積み立てると満額使えるにゃ！でも1,000円からでも大丈夫🎵</div>
+      <!-- ワンポイント -->
+      <div style="margin:10px 16px 90px;background:linear-gradient(135deg,#FFF0F8,#FFE4F0);border-radius:16px;padding:13px 16px;border-left:4px solid #FF6B9D">
+        <div style="font-size:10px;font-weight:800;color:#FF6B9D;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">🐱 ニャイサのワンポイント</div>
+        <div style="font-size:13px;color:#2D2D2D;font-weight:600;line-height:1.6">つみたてNISAの<span style="background:#FF6B9D;color:#fff;padding:1px 7px;border-radius:6px;font-weight:800">年間上限は40万円</span>。月々33,333円積み立てると満額使えるにゃ！でも1,000円からでも大丈夫🎵</div>
       </div>
     </div>
+
     <div class="bottom-nav">
       <div class="nav-item active" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span><div class="nav-pill"></div></div>
       <div class="nav-item" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span></div>
@@ -858,6 +936,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       <button onclick="hideLogoutModal()" style="width:100%;background:#F5F5F5;color:#5A5A5A;border:none;border-radius:50px;padding:14px;font-size:16px;font-weight:800;cursor:pointer">キャンセル</button>
     </div>
   </div>
+  <!-- AFFECTION POPUP -->
+  <div class="affection-popup" id="affection-popup">
+    <div class="affection-popup-icon">💕</div>
+    <div class="affection-popup-text">好感度 UP！</div>
+    <div class="affection-popup-sub">ニャイサがもっと好きになったにゃ♪</div>
+  </div>
 </div><!-- end phone-frame -->
 <div style="text-align:center;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;opacity:0.85">← ナビゲーションをクリックして操作できます</div>
 </div>
@@ -947,6 +1031,49 @@ function updateGreeting(){
   const name=(document.getElementById('user-name-input')?.value)||'さくら';
   document.getElementById('home-greeting').textContent=`${g}、${name}さん 🌟`;
 }
+
+// ===== DATING SIM SYSTEM =====
+const vnLines = ["おはよう、さくらさん…💕<br>今日も一緒にNISA勉強しようにゃ♪", "昨日も来てくれたね…嬉しいにゃ🌸<br>続けることが一番大事だよ！", "今日のレッスン、一緒に頑張ろう！<br>わからなかったら何でも聞いてにゃ💕", "NISAって最初は難しく感じるけど…<br>一緒に学べば絶対できるにゃ✨", "さくらさんと話せて嬉しいにゃ🌸<br>今日も頑張ろう！"];
+let vnIdx = 0;
+let affectionLevel = 4;
+
+function nextVNText(){
+  vnIdx = (vnIdx + 1) % vnLines.length;
+  const el = document.getElementById('home-vn-text');
+  if(el){ el.style.opacity='0'; setTimeout(()=>{ el.innerHTML=vnLines[vnIdx]; el.style.opacity='1'; }, 150); }
+  spawnHearts();
+}
+
+function spawnHearts(){
+  const wrap = document.getElementById('sparkle-wrap');
+  if(!wrap) return;
+  for(let i=0;i<4;i++){
+    setTimeout(()=>{
+      const h = document.createElement('div');
+      h.className = 'float-heart';
+      h.textContent = ['💕','💗','🌸','✨','💖'][Math.floor(Math.random()*5)];
+      h.style.left = (20 + Math.random()*60) + '%';
+      h.style.bottom = '20px';
+      wrap.appendChild(h);
+      setTimeout(()=>h.remove(), 1600);
+    }, i*200);
+  }
+}
+
+function addAffection(){
+  spawnHearts();
+  if(affectionLevel < 5){
+    affectionLevel++;
+    const popup = document.getElementById('affection-popup');
+    if(popup){
+      popup.style.display='block';
+      setTimeout(()=>popup.style.display='none', 2000);
+    }
+  } else {
+    showToast('💕 好感度MAX！ニャイサがめちゃくちゃ嬉しそうにゃ🌸');
+  }
+}
+
 function animateHomeProgress(){
   setTimeout(()=>{const el=document.getElementById('home-progress');if(el)el.style.width='30%';},300);
 }
