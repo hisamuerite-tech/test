@@ -183,6 +183,73 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .fade-in-up{animation:fadeInUp 0.4s ease both}
 .pulse{animation:pulse 3s infinite}
 
+
+/* LEARNING V2 */
+.learn-header-v2{background:linear-gradient(135deg,#FFB380,#FF8C42);padding:44px 20px 20px;color:#fff}
+.learn-title-v2{font-size:22px;font-weight:900;margin-bottom:14px}
+.xp-section{background:rgba(255,255,255,0.2);border-radius:16px;padding:12px 16px}
+.xp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.xp-level{font-size:14px;font-weight:800}
+.xp-count{font-size:13px;font-weight:700;opacity:0.9}
+.xp-bar-v2{height:10px;background:rgba(255,255,255,0.3);border-radius:5px;overflow:hidden}
+.xp-bar-fill{height:100%;background:#fff;border-radius:5px;width:65%;transition:width 1s ease}
+.today-goal{background:#fff;border-radius:20px;padding:14px 16px;margin:14px 16px 0;box-shadow:0 4px 20px rgba(255,140,66,0.15);display:flex;align-items:center;gap:12px}
+.today-goal-icon{width:44px;height:44px;background:linear-gradient(135deg,#FFD166,#FF8C42);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.today-goal-text{flex:1}
+.today-goal-label{font-size:10px;color:#FF8C42;font-weight:800;text-transform:uppercase;letter-spacing:0.5px}
+.today-goal-title{font-size:14px;font-weight:800;color:#2D2D2D}
+.chapter-label{font-size:11px;font-weight:800;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;padding:16px 0 8px;text-align:center}
+.lesson-path{display:flex;flex-direction:column;align-items:center;padding:0 20px}
+.path-item{width:100%;margin-bottom:4px;position:relative}
+.path-line{width:3px;height:16px;background:#F0F0F0;margin:0 auto;border-radius:2px}
+.path-line.done{background:#5CBF8A}
+.lesson-node{background:#fff;border-radius:20px;padding:14px 16px;box-shadow:0 4px 16px rgba(255,140,66,0.1);display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;border:2px solid transparent;width:100%}
+.lesson-node.done{border-color:#5CBF8A;background:#F8FFF8}
+.lesson-node.current{border-color:#FF8C42;box-shadow:0 4px 24px rgba(255,140,66,0.25);animation:nodePulse 2s infinite}
+.lesson-node.locked{opacity:0.55;cursor:default;filter:grayscale(0.3)}
+@keyframes nodePulse{0%,100%{box-shadow:0 4px 24px rgba(255,140,66,0.25)}50%{box-shadow:0 4px 32px rgba(255,140,66,0.45)}}
+.node-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.node-icon.green{background:#E8F8F0}
+.node-icon.orange{background:#FFF0E6}
+.node-icon.gray{background:#F5F5F5}
+.node-info{flex:1}
+.node-step{font-size:10px;font-weight:800;color:#9B9B9B;margin-bottom:2px}
+.node-title{font-size:15px;font-weight:800;color:#2D2D2D;margin-bottom:6px}
+.node-tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.node-time{font-size:11px;color:#9B9B9B;font-weight:600}
+.node-xp{font-size:11px;color:#FF8C42;font-weight:800;background:#FFF0E6;padding:2px 8px;border-radius:50px}
+.node-status{font-size:11px;font-weight:800;padding:2px 10px;border-radius:50px}
+.node-status.done-st{background:#E8F8F0;color:#5CBF8A}
+.node-status.current-st{background:#FFF0E6;color:#FF8C42}
+.node-status.locked-st{background:#F5F5F5;color:#9B9B9B}
+.node-arrow{font-size:20px;color:#FF8C42;flex-shrink:0}
+.current-tag{position:absolute;top:0;right:0;background:#FF8C42;color:#fff;font-size:9px;font-weight:800;padding:3px 10px;border-radius:0 18px 0 12px}
+/* LESSON DETAIL V2 */
+.lesson-detail-v2{background:#fff;border-radius:24px;margin:0 0 12px;box-shadow:0 6px 30px rgba(255,140,66,0.15);overflow:hidden}
+.lesson-detail-header{background:linear-gradient(135deg,#FF8C42,#FFB380);padding:20px;color:#fff}
+.lesson-detail-title{font-size:18px;font-weight:900;margin-bottom:8px}
+.lesson-detail-meta{display:flex;gap:10px}
+.lesson-detail-badge{background:rgba(255,255,255,0.25);border-radius:50px;padding:4px 12px;font-size:12px;font-weight:700}
+.lesson-steps{padding:16px}
+.step-block{background:#FFF8F0;border-radius:16px;padding:14px;margin-bottom:10px;border-left:4px solid #FF8C42}
+.step-block.blue{background:#F0F8FF;border-left-color:#7EC8E3}
+.step-block.green{background:#F0FFF6;border-left-color:#5CBF8A}
+.step-num{font-size:10px;font-weight:800;color:#FF8C42;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.step-num.blue{color:#4A9FB5}
+.step-num.green{color:#5CBF8A}
+.step-text{font-size:13px;color:#2D2D2D;line-height:1.8;font-weight:600}
+.hl{background:#FF8C42;color:#fff;padding:1px 7px;border-radius:6px;font-weight:800}
+.quiz-block{background:#fff;border:2px solid #F0F0F0;border-radius:16px;padding:14px;margin-bottom:10px}
+.quiz-q{font-size:14px;font-weight:800;color:#2D2D2D;margin-bottom:10px}
+.quiz-opt{background:#F5F5F5;border:2px solid transparent;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:700;color:#5A5A5A;cursor:pointer;margin-bottom:6px;transition:all 0.2s;text-align:left;width:100%}
+.quiz-opt:hover{border-color:#FF8C42;background:#FFF0E6;color:#FF8C42}
+.quiz-opt.correct{border-color:#5CBF8A;background:#E8F8F0;color:#5CBF8A}
+.quiz-opt.wrong{border-color:#E05A5A;background:#FFE8E8;color:#E05A5A}
+.quiz-result{display:none;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:700;margin-top:8px}
+.quiz-result.show{display:block}
+.quiz-result.ok{background:#E8F8F0;color:#5CBF8A}
+.quiz-result.ng{background:#FFE8E8;color:#E05A5A}
+
 @media(max-width:420px){
   body{padding:0;align-items:flex-start}
   .phone-frame{width:100vw;height:100vh;border-radius:0;box-shadow:none}
@@ -408,82 +475,187 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 
   <!-- LEARNING -->
   <div class="screen" id="screen-learning">
-    <div class="learn-header">
-      <div class="learn-title">ニャイサ学習塾 📚</div>
-      <div class="level-row">
-        <div class="level-badge">⭐ レベル2</div>
-        <div class="xp-bar"><div class="xp-fill"></div></div>
-        <div style="font-size:12px;font-weight:700;opacity:0.9">650/1000 XP</div>
+    <div class="learn-header-v2">
+      <div class="learn-title-v2">ニャイサ学習塾 📚</div>
+      <div class="xp-section">
+        <div class="xp-top">
+          <span class="xp-level">⭐ レベル2</span>
+          <span class="xp-count">650 / 1000 XP</span>
+        </div>
+        <div class="xp-bar-v2"><div class="xp-bar-fill" id="xp-fill-bar"></div></div>
       </div>
     </div>
-    <div class="learn-body">
-      <div class="speech-bubble-wrap" style="margin:0 0 12px">
-        <svg width="44" height="44" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="24" fill="#FF8C42"/><polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/><polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/><path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="19" cy="31" r="5" fill="#FFB380" opacity="0.5"/><circle cx="33" cy="31" r="5" fill="#FFB380" opacity="0.5"/><ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/><path d="M22,35 Q26,39 30,35" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="2" y1="28" x2="19" y2="31" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="2" y1="33" x2="19" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="31" x2="50" y2="28" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="33" x2="50" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/></svg>
-        <div class="speech-bubble">
-          <div class="bubble-title">💭 ニャイサより</div>
-          <p>順番に学ぶと理解しやすいにゃ！今は「分散投資」を一緒に学ぼう📖</p>
-        </div>
-      </div>
 
-      <div class="lesson-card done">
-        <div class="lesson-icon green">✅</div>
-        <div class="lesson-info">
-          <div class="lesson-title">NISAってなに？</div>
-          <div class="lesson-meta"><span class="lesson-duration">⏱ 3分</span><span class="lesson-xp">+50 XP</span><span class="tag tag-green" style="font-size:10px">完了！</span></div>
-        </div>
+    <div class="today-goal">
+      <div class="today-goal-icon">🎯</div>
+      <div class="today-goal-text">
+        <div class="today-goal-label">今日の目標</div>
+        <div class="today-goal-title">「分散投資とは？」をクリアしよう！</div>
       </div>
-      <div class="lesson-card done">
-        <div class="lesson-icon green">✅</div>
-        <div class="lesson-info">
-          <div class="lesson-title">投資ってこわくない</div>
-          <div class="lesson-meta"><span class="lesson-duration">⏱ 4分</span><span class="lesson-xp">+60 XP</span><span class="tag tag-green" style="font-size:10px">完了！</span></div>
-        </div>
-      </div>
-      <div class="lesson-card current" onclick="toggleLesson()">
-        <div class="lesson-icon orange">🎯</div>
-        <div class="lesson-info">
-          <div class="lesson-title">分散投資とは？</div>
-          <div class="lesson-meta"><span class="lesson-duration">⏱ 3分</span><span class="lesson-xp">+50 XP</span><span class="tag tag-orange" style="font-size:10px">学習中</span></div>
-        </div>
-        <div style="font-size:18px">▶️</div>
-        <div class="current-ribbon">今日のレッスン</div>
-      </div>
+      <span style="font-size:22px">▶️</span>
+    </div>
 
-      <div class="lesson-detail" id="lesson-detail" style="display:none">
-        <div style="font-size:17px;font-weight:900;color:#2D2D2D;margin-bottom:12px">🎯 分散投資とは？</div>
-        <div class="speech-bubble-wrap" style="margin:0 0 12px">
-          <svg width="36" height="36" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="24" fill="#FF8C42"/><polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/><polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/><path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="19" cy="31" r="5" fill="#FFB380" opacity="0.5"/><circle cx="33" cy="31" r="5" fill="#FFB380" opacity="0.5"/><ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/><path d="M22,35 Q26,39 30,35" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="2" y1="28" x2="19" y2="31" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="2" y1="33" x2="19" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="31" x2="50" y2="28" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="33" x2="50" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/></svg>
-          <div class="speech-bubble">
-            <p>「卵は一つのカゴに盛るな」それが分散投資の考え方にゃ！</p>
+    <div style="padding:0 16px 16px">
+
+      <div class="chapter-label">📗 第1章：NISAの基礎</div>
+
+      <div class="lesson-path">
+        <!-- レッスン1 完了 -->
+        <div class="path-item">
+          <div class="lesson-node done">
+            <div class="node-icon green">✅</div>
+            <div class="node-info">
+              <div class="node-step">レッスン 1</div>
+              <div class="node-title">NISAってなに？</div>
+              <div class="node-tags">
+                <span class="node-time">⏱ 3分</span>
+                <span class="node-xp">+50 XP</span>
+                <span class="node-status done-st">完了！</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="lesson-content-block">
-          <p>分散投資とは、<span class="highlight">複数の商品に分けて</span>お金を投資することです。<br><br>例えば、1つの会社の株だけ買うと、その会社が倒産したら全部なくなります。でも100社に分散すると、1社がダメでも他の99社がカバーしてくれます！</p>
+        <div class="path-line done"></div>
+
+        <!-- レッスン2 完了 -->
+        <div class="path-item">
+          <div class="lesson-node done">
+            <div class="node-icon green">✅</div>
+            <div class="node-info">
+              <div class="node-step">レッスン 2</div>
+              <div class="node-title">投資ってこわくない</div>
+              <div class="node-tags">
+                <span class="node-time">⏱ 4分</span>
+                <span class="node-xp">+60 XP</span>
+                <span class="node-status done-st">完了！</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="lesson-content-block" style="background:#E0F4FB">
-          <p style="font-size:13px;font-weight:700;color:#2D2D2D;margin-bottom:6px">🌍 インデックスファンドで簡単に分散！</p>
-          <p>「全世界株式」の投資信託を1つ買うだけで、<span class="highlight">世界中の数千社</span>に自動で分散できます。</p>
+        <div class="path-line done"></div>
+
+        <!-- レッスン3 学習中 -->
+        <div class="path-item">
+          <div class="lesson-node current" onclick="toggleLessonV2()">
+            <div class="node-icon orange">🌍</div>
+            <div class="node-info">
+              <div class="node-step">レッスン 3</div>
+              <div class="node-title">分散投資とは？</div>
+              <div class="node-tags">
+                <span class="node-time">⏱ 3分</span>
+                <span class="node-xp">+50 XP</span>
+                <span class="node-status current-st">学習中 ▶</span>
+              </div>
+            </div>
+            <div class="current-tag">今日！</div>
+          </div>
         </div>
-        <button class="btn-primary" onclick="alert('🎉 レッスン完了！+50XP 獲得！\nすごいにゃ！継続は力なり！')">✅ 理解できた！+50XP</button>
+
+        <!-- レッスン詳細（展開） -->
+        <div id="lesson-detail-v2" style="display:none;width:100%;margin-top:8px">
+          <div class="lesson-detail-v2">
+            <div class="lesson-detail-header">
+              <div class="lesson-detail-title">🌍 分散投資とは？</div>
+              <div class="lesson-detail-meta">
+                <span class="lesson-detail-badge">⏱ 3分</span>
+                <span class="lesson-detail-badge">+50 XP 獲得</span>
+              </div>
+            </div>
+            <div class="lesson-steps">
+
+              <div class="speech-bubble-wrap" style="margin:0 0 12px"><svg width="44" height="44" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="24" fill="#FF8C42"/><polygon points="18,14 14,6 22,12" fill="#FF8C42"/><polygon points="19,13 15,7 22,12" fill="#FFB380"/><polygon points="34,14 38,6 30,12" fill="#FF8C42"/><polygon points="33,13 37,7 30,12" fill="#FFB380"/><path d="M20,27 Q23,22 26,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M26,27 Q29,22 32,27" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="19" cy="31" r="5" fill="#FFB380" opacity="0.5"/><circle cx="33" cy="31" r="5" fill="#FFB380" opacity="0.5"/><ellipse cx="26" cy="32" rx="3" ry="2" fill="#FF6B6B"/><path d="M22,35 Q26,39 30,35" stroke="#E05A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="2" y1="28" x2="19" y2="31" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="2" y1="33" x2="19" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="31" x2="50" y2="28" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/><line x1="33" y1="33" x2="50" y2="33" stroke="#8B5E3C" stroke-width="1.2" opacity="0.6"/></svg>
+                <div class="speech-bubble">
+                  <p>「卵は一つのカゴに盛るな」<br>これが分散投資の考え方にゃ！</p>
+                </div>
+              </div>
+
+              <div class="step-block">
+                <div class="step-num">📖 ポイント1</div>
+                <div class="step-text">
+                  分散投資とは、<span class="hl">複数の商品に分けて</span>お金を投資することです。<br><br>
+                  1社だけに投資 → その会社が倒産したら全部なくなる😱<br>
+                  100社に分散 → 1社がダメでも残り99社がカバー✅
+                </div>
+              </div>
+
+              <div class="step-block blue">
+                <div class="step-num blue">🌍 ポイント2</div>
+                <div class="step-text">
+                  実は<span style="background:#7EC8E3;color:#fff;padding:1px 7px;border-radius:6px;font-weight:800">インデックスファンド</span>を1つ買うだけで、<br>
+                  世界中の数千社に自動で分散できます！<br><br>
+                  難しい選択は不要。全世界株式を1つ買えばOKにゃ🎵
+                </div>
+              </div>
+
+              <div class="step-block green">
+                <div class="step-num green">💡 まとめ</div>
+                <div class="step-text">
+                  ✅ 分散 ＝ リスクを小さくする工夫<br>
+                  ✅ インデックスファンドで自動分散<br>
+                  ✅ 難しく考えなくて大丈夫！
+                </div>
+              </div>
+
+              <!-- ミニクイズ -->
+              <div class="quiz-block">
+                <div class="quiz-q">🐱 理解チェック！<br>分散投資をすると、どうなる？</div>
+                <button class="quiz-opt" onclick="answerQuiz(this,false)">❌ リスクが増える</button>
+                <button class="quiz-opt" onclick="answerQuiz(this,true)">✅ リスクが小さくなる</button>
+                <button class="quiz-opt" onclick="answerQuiz(this,false)">❓ 関係ない</button>
+                <div class="quiz-result" id="quiz-result"></div>
+              </div>
+
+              <button class="btn-primary" id="lesson-complete-btn" style="display:none" onclick="completeLesson()">
+                🎉 レッスン完了！+50XP ゲット！
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="path-line" style="margin-top:4px"></div>
+
+        <!-- レッスン4 ロック -->
+        <div class="path-item">
+          <div class="lesson-node locked">
+            <div class="node-icon gray">🔒</div>
+            <div class="node-info">
+              <div class="node-step">レッスン 4</div>
+              <div class="node-title">暴落したらどうする？</div>
+              <div class="node-tags">
+                <span class="node-time">⏱ 5分</span>
+                <span class="node-xp">+70 XP</span>
+                <span class="node-status locked-st">レッスン3をクリアで解放</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="path-line"></div>
+
+        <!-- レッスン5 ロック -->
+        <div class="path-item">
+          <div class="lesson-node locked">
+            <div class="node-icon gray">🔒</div>
+            <div class="node-info">
+              <div class="node-step">レッスン 5</div>
+              <div class="node-title">長期投資の考え方</div>
+              <div class="node-tags">
+                <span class="node-time">⏱ 4分</span>
+                <span class="node-xp">+60 XP</span>
+                <span class="node-status locked-st">ロック中</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end lesson-path -->
+
+      <!-- 次の章予告 -->
+      <div style="background:#F5F5F5;border-radius:16px;padding:14px;text-align:center;margin-top:8px;margin-bottom:8px">
+        <div style="font-size:22px;margin-bottom:4px">🔒</div>
+        <div style="font-size:13px;font-weight:800;color:#9B9B9B">📘 第2章：投資信託の選び方</div>
+        <div style="font-size:11px;color:#9B9B9B;font-weight:600;margin-top:2px">第1章をすべてクリアすると解放！</div>
       </div>
 
-      <div class="lesson-card locked">
-        <div class="lesson-icon gray">🔒</div>
-        <div class="lesson-info">
-          <div class="lesson-title">暴落したらどうする？</div>
-          <div class="lesson-meta"><span class="lesson-duration">⏱ 5分</span><span class="lesson-xp">+70 XP</span><span class="tag" style="background:#F5F5F5;color:#9B9B9B;font-size:10px">ロック中</span></div>
-        </div>
-        <div style="font-size:18px">🔒</div>
-      </div>
-      <div class="lesson-card locked">
-        <div class="lesson-icon gray">🔒</div>
-        <div class="lesson-info">
-          <div class="lesson-title">長期投資の考え方</div>
-          <div class="lesson-meta"><span class="lesson-duration">⏱ 4分</span><span class="lesson-xp">+60 XP</span><span class="tag" style="background:#F5F5F5;color:#9B9B9B;font-size:10px">ロック中</span></div>
-        </div>
-        <div style="font-size:18px">🔒</div>
-      </div>
-    </div>
+    </div><!-- end body -->
     <div class="bottom-nav">
       <div class="nav-item" onclick="goToScreen('home')"><span class="ni">🏠</span><span>ホーム</span></div>
       <div class="nav-item active" onclick="goToScreen('learning')"><span class="ni">📚</span><span>学習</span><div class="nav-pill"></div></div>
@@ -493,7 +665,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     </div>
   </div>
 
-  <!-- PRODUCTS (accessible via diagnosis result or profile) -->
+    <!-- PRODUCTS (accessible via diagnosis result or profile) -->
   <div class="screen" id="screen-products">
     <div class="prod-header">
       <div style="font-size:20px;font-weight:900;color:#2D2D2D;margin-bottom:6px">ニャイサのおすすめ 🐱</div>
@@ -897,7 +1069,37 @@ function renderSimChart(monthly,years,rate){
 // LEARNING
 function toggleLesson(){
   const d=document.getElementById('lesson-detail');
-  d.style.display=d.style.display==='none'?'block':'none';
+  if(d) d.style.display=d.style.display==='none'?'block':'none';
+}
+function toggleLessonV2(){
+  const d=document.getElementById('lesson-detail-v2');
+  if(!d) return;
+  const isOpen = d.style.display!=='none';
+  d.style.display = isOpen ? 'none' : 'block';
+}
+function answerQuiz(btn, correct){
+  document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=true;b.style.opacity='0.7';});
+  const res=document.getElementById('quiz-result');
+  if(correct){
+    btn.classList.add('correct');
+    res.className='quiz-result show ok';
+    res.textContent='🎉 正解！よく分かったにゃ！「完了」ボタンを押してXPをゲットしよう！';
+    document.getElementById('lesson-complete-btn').style.display='block';
+  } else {
+    btn.classList.add('wrong');
+    res.className='quiz-result show ng';
+    res.textContent='💡 惜しい！分散投資はリスクを「小さくする」工夫だよ。';
+    setTimeout(()=>{
+      document.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;b.style.opacity='1';b.classList.remove('wrong','correct');});
+      res.className='quiz-result';
+    }, 2000);
+  }
+}
+function completeLesson(){
+  document.getElementById('lesson-detail-v2').style.display='none';
+  const fill=document.getElementById('xp-fill-bar');
+  if(fill) fill.style.width='80%';
+  showToast('🎉 レッスン完了！+50XP 獲得にゃ✨');
 }
 
 // PRODUCTS
