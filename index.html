@@ -179,8 +179,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes drawLine{from{stroke-dashoffset:500}to{stroke-dashoffset:0}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .fade-in-up{animation:fadeInUp 0.4s ease both}
 .pulse{animation:pulse 3s infinite}
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#2D2D2D;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;white-space:nowrap;z-index:9999;animation:toastIn 0.3s ease;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 
 @media(max-width:420px){
   body{padding:0;align-items:flex-start}
@@ -522,7 +524,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
           <p style="font-size:13px;font-weight:700;color:#2D2D2D;margin-bottom:6px">🌍 インデックスファンドで簡単に分散！</p>
           <p>「全世界株式」の投資信託を1つ買うだけで、<span class="highlight">世界中の数千社</span>に自動で分散できます。</p>
         </div>
-        <button class="btn-primary" onclick="alert('🎉 レッスン完了！+50XP 獲得！\nすごいにゃ！継続は力なり！')">✅ 理解できた！+50XP</button>
+        <button class="btn-primary" onclick="showToast('🎉 レッスン完了！+50XP 獲得！すごいにゃ🐱')">✅ 理解できた！+50XP</button>
       </div>
 
       <div class="lesson-card locked">
@@ -748,6 +750,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 </div>
 
 <script>
+// TOAST NOTIFICATION (alert()の代替)
+function showToast(msg){
+  document.querySelectorAll('.toast').forEach(t=>t.remove());
+  const t=document.createElement('div');
+  t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3000);
+}
+
 // NAVIGATION
 function goToScreen(name){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
